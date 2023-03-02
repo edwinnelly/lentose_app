@@ -5,3 +5,6 @@ RewriteRule ^ %1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*?)/?$ $1.php [NC,L]
+
+#RewriteEngine on
+#RewriteRule ^403.php$ /https://lentose.com/master/page-login [R=301]
