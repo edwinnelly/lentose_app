@@ -1,12 +1,15 @@
 <?php
 include_once "component/user_data.php";
 $app = new controller;
-<<<<<<< HEAD
-=======
+
 $cc = $app->count_pid_products($key_grant);
 $customer = $app->count_cus_($key_grant);
 $category = $app->count_category_($key_grant);
->>>>>>> c7154a108c2455ff3adf873a3056d30651d522b9
+
+$cc = $app->count_pid_products($key_grant);
+$customer = $app->count_cus_($key_grant);
+$category = $app->count_category_($key_grant);
+
 ?>
 <!doctype html>
 <html lang="en">
