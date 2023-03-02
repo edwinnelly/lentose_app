@@ -126,8 +126,8 @@
                             <ul>
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
-                                <li><a href="ecom-customers.php">Customer History</a></li>
-
+                                <li><a href="customer_history">Customer History</a></li>
+                                <li><a href="customer_order">Customer Order</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
