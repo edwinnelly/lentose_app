@@ -1,13 +1,7 @@
 <?php
-// error_reporting(0);
-// ini_set('display_errors', 0);
-// date_default_timezone_set("Africa/Lagos");
-// /** Database connection credentials for localhost **/
-//      define("host", "localhost");
-//      define("user", "daroffle_updated");
-//      define("password", "Edwin3l3@E");
-//      define("database", "daroffle_updated");
-//      define("apikey", "");
+error_reporting(0);
+ini_set('display_errors', 0);
+
 ?>
 
 
@@ -15,9 +9,9 @@
 <?php
 /** Database connection credentials for localhost **/
 define("host", "localhost");
-define("user", "root");
-define("password", "");
-define("database", "app_data");
+define("user", "lentprqi_lentosedb");
+define("password", "upjuh[1B;~e(");
+define("database", "lentprqi_lentose_deploy");
 define("apikey", "");
 
 

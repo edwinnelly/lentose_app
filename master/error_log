@@ -1,0 +1,102 @@
+[12-Dec-2022 09:42:52 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:42:52 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:42:52 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:42:52 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:42:52 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:42:55 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:42:55 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:42:55 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:42:55 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:42:55 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:42:56 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:42:56 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:42:56 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:42:56 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:42:56 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:42:58 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:42:58 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:42:58 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:42:58 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:42:58 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:43:32 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:43:32 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:43:32 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:43:32 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:43:32 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:43:37 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:43:37 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:43:37 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:43:37 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:43:37 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:44:01 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:44:01 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:44:01 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:44:01 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:44:01 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[12-Dec-2022 09:46:21 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'lentprqi_lentose_oma_ama'@'localhost' (using password: YES) in /home/lentprqi/public_html/master/component/db-config.php on line 16
+[12-Dec-2022 09:46:21 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 35
+[12-Dec-2022 09:46:21 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 39
+[12-Dec-2022 09:46:21 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, string given in /home/lentprqi/public_html/master/component/db-config.php on line 28
+[12-Dec-2022 09:46:21 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/lentprqi/public_html/master/component/db-config.php on line 56
+[14-Dec-2022 06:04:22 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[14-Dec-2022 06:04:22 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[14-Dec-2022 06:16:10 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[14-Dec-2022 06:16:10 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[14-Dec-2022 22:49:20 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[14-Dec-2022 22:49:20 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:14:31 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:14:31 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:17:23 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:17:23 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:18:24 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[15-Dec-2022 23:18:24 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:50:52 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:50:52 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:51:43 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:51:43 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:53:34 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:53:34 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:53:58 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[28-Dec-2022 13:53:58 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[29-Dec-2022 02:48:50 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[29-Dec-2022 02:48:50 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[03-Jan-2023 03:45:54 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[03-Jan-2023 03:45:54 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 05:38:28 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 05:38:28 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:22:39 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:22:39 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:35:52 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:35:52 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:39:33 America/New_York] PHP Notice:  Undefined variable: userInfo in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[07-Jan-2023 08:39:33 America/New_York] PHP Notice:  Trying to get property 'business_name' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 7
+[30-Jan-2023 13:07:58 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:07:58 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:28:12 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:28:12 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:28:13 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:28:13 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:08 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:08 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:28 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:28 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:48 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:29:48 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:43:05 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:43:05 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:44:45 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[30-Jan-2023 13:44:45 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:58:58 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:58:58 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:59:09 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:59:09 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:59:26 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[07-Feb-2023 16:59:26 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:38 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:38 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:45 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:45 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:56 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 07:30:56 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 09:40:45 America/New_York] PHP Notice:  Undefined variable: cc in /home/lentprqi/public_html/master/component/sidebar.php on line 19
+[02-Mar-2023 09:40:45 America/New_York] PHP Notice:  Trying to get property 'total_prod' of non-object in /home/lentprqi/public_html/master/component/sidebar.php on line 19

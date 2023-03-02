@@ -13,7 +13,12 @@ $get_sib = base64_decode($app->get_request('sib'));
     ?>
 </head>
 <body class="theme-cyan">
-
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="../logo/lentose1.png" height="150" alt="Lentose"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
 <div id="wrapper">
     <?php
     require_once 'component/header.php';
@@ -88,7 +93,7 @@ $get_sib = base64_decode($app->get_request('sib'));
                                                          style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                         <a href="ecom_category_three?sid=<?= base64_encode($cc->id); ?>&&sib=<?= base64_encode($cc->category_postomg); ?>&&last=<?= base64_encode($get_sib); ?>" class="dropdown-item cc" style="cursor: pointer">Sub-category</a>
                                                         <hr>
-                                                        <a class="dropdown-item" style="cursor: pointer"
+                                                        <a class="dropdown-item cc" style="cursor: pointer"
                                                            data-info="<?= $cc->category_postomg; ?>"
                                                            data-id="<?= $cc->id; ?>">Edit</a>
 

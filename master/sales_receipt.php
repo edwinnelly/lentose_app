@@ -5,7 +5,7 @@ $app = new controller;
 <!doctype html>
 <html lang="en">
 <head>
-    <title>:: Lentose :: Cart Manager List</title>
+    <title>:: Lentose :: sales receipt Manager List</title>
     <?php
     require_once 'component/meta_config.php';
     ?>
@@ -28,7 +28,7 @@ $app = new controller;
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-12">
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
-                                        class="fa fa-arrow-left"></i></a> Cart Manager List</h2>
+                                        class="fa fa-arrow-left"></i></a>Customer Sales History</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">Add</li>
@@ -48,10 +48,10 @@ $app = new controller;
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>You can add, edit or delete Item from cart</small> </h2>
+                                <h2>You can view, Print or Link Item from cart</small> </h2>
                             </div>
                             <div class="body table-responsive">
                                 <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
@@ -66,7 +66,7 @@ $app = new controller;
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $get_category = $app->fetch_all_items($key_grant);
+                                    $get_category = $app->print_sales($key_grant);
                                     $count = 0;
                                     foreach ($get_category as $cc) {
                                         $count++;
@@ -74,12 +74,34 @@ $app = new controller;
                                         <tr>
                                             <th><?= $count++; ?></th>
                                             <td>
-                                                <b><?= $cc->items_name; ?></b><br><?= $app->stringFormat($cc->description_inventory, 50); ?>
+                                                <b><?= $cc->sales_id; ?></b><br><?= $app->stringFormat($cc->description_inventory, 50); ?>
                                                 <label class=""><?= $cc->category_postomg; ?></label></td>
                                             <td><?= number_format($cc->regular_price); ?></td>
                                             <td><?= $cc->on_hand_qty; ?></td>
                                             <td>
-                                                <button class="btn btn-primary font-weight-bold addtocart" data-pid="<?= $cc->pid; ?>" data-item="<?= $cc->items_name; ?>" data-selling="<?= $cc->regular_price; ?>" data-cost_price="<?= $cc->order_price; ?>">Add</button>
+
+                                                <div class="btn-group" role="group">
+                                                    <button id="btnGroupDrop1" type="button"
+                                                            class="btn btn-primary dropdown-toggle "
+                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        Action
+                                                    </button>
+                                                    <div class="dropdown-menu pre-scrollable" aria-labelledby="btnGroupDrop1"
+                                                         x-placement="top-start"
+                                                         style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        <a class="dropdown-item"
+                                                           href="edit_basic_info?sid=<?= base64_encode($cc->pid); ?>">Print Report</a>
+
+                                                        <a href="edit_shop_images?sid=<?= base64_encode($cc->pid); ?>"
+                                                           class="dropdown-item">Link Item</a>
+
+                                                        <a href="edit_shop_images?sid=<?= base64_encode($cc->pid); ?>"
+                                                           class="dropdown-item">Return Item</a>
+
+                                                    </div>
+                                                </div>
+
                                             </td>
                                         </tr>
                                         <?php
@@ -92,62 +114,6 @@ $app = new controller;
 
                     </div>
 
-
-                    <div class="col-lg-5">
-                        <div class="card">
-                            <div class="header">
-                                <h2></small>
-                                    <button class="btn btn-primary pull-right font-weight-bold" id="checkouts">Check out</button>
-                                    <img style="cursor: pointer" class="p-l-5" src="https://cdn2.iconfinder.com/data/icons/e-commerce-643/24/empty_cart_retail_buy_market_cancel_order_supermarket-512.png" height="30" id="clearcarts">
-                                    <img style="cursor: pointer" onclick="window.location.href='carts'" class="p-l-5" src="https://cdn1.iconfinder.com/data/icons/material-core/16/refresh-48.png" height="20">
-
-                                    <label class="p-l-20 text-default">₦<?php
-                                        $sum_cart = $app->sum_carts($key_grant); echo number_format($sum_cart->price_sold);
-                                        ?></label>
-
-                                </h2>
-                            </div>
-                            <div class="body table-responsive">
-
-                                <table class="table table-bordered table-hover js-basic-example dataTable table-custom" id="examples">
-                                    <thead>
-                                    <tr>
-                                        <th> #</th>
-                                        <th>Item Name</th>
-                                        <th>Amount</th>
-                                        <th> Quantity</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    $get_category = $app->fetch_carts($key_grant);
-                                    $count = 0;
-                                    foreach ($get_category as $cc) {
-                                        $count++;
-                                        ?>
-                                        <tr>
-                                            <th><?= $count++; ?></th>
-                                            <td><b><?= $app->stringFormat($cc->item_name, 25); ?></b></td>
-                                            <td><?= number_format($cc->price_sold); ?></td>
-                                            <td><?= $cc->qty; ?></td>
-                                            <td>
-                                                <button class="btn btn-primary font-weight-bold edel" data-id="<?= $cc->id; ?>">X</button>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                    </tbody>
-                                </table>
-
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
                 </div>
                 <script src="assets/bundles/libscripts.bundle.js"></script>
                 <script src="assets/bundles/vendorscripts.bundle.js"></script>
@@ -242,7 +208,7 @@ $app = new controller;
                                     function () {
                                         window.location.href = 'carts';
                                     }, 3000);
-//                                
+//
                             } else {
                             }
                         },

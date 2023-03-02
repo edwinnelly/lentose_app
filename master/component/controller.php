@@ -212,8 +212,6 @@ class controller extends dbc
     }
 
 
-
-
     /** function to get shop categories **/
     public function getCategories_ecom_three($key_grant, $get_sid)
     {
@@ -282,6 +280,7 @@ class controller extends dbc
             return "Invalid Command";
         }
     }
+
     public function update_product_category_ads($infos, $pid_key, $key_grant)
     {
         $query = "update customads_category set category_postomg='$infos' where id='$pid_key' and user_key='$key_grant'";
@@ -307,6 +306,17 @@ class controller extends dbc
     public function update_product_category_ecom_two($infos, $pid_key, $key_grant)
     {
         $query = "update category_two set category_name='$infos' where id='$pid_key' and store_key='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+    public function update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id)
+    {
+        $query = "update sales set sales_id='$trans_id',payment_method='$payment', customer='$customer' where sales_id='new' and store_key='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -349,6 +359,7 @@ class controller extends dbc
             return "Invalid Command";
         }
     }
+
     public function add_ads_s($catnamex, $rand, $key_grant)
     {
         $dated = date('d-m-Y');
@@ -361,10 +372,10 @@ class controller extends dbc
         }
     }
 
-    public function new_add_carts($pid, $qty,$amount,$key_grant,$items,$user_id,$amount_unit)
+    public function new_add_carts($pid, $qty, $amount, $key_grant, $items, $user_id, $amount_unit)
     {
         $dated = date('d-m-Y h:i:s');
-        $query = "INSERT INTO `sales` (`id`, `sales_id`, `shop_id`, `store_key`, `product_id`, `shop_prod_id`, `qty`, `price_sold`, `selling_price`, `cost_price`, `seller_id`, `seller_name`, `seller_type`, `returned`, `date_sold`, `week`, `month`, `payment_method`, `customer`, `item_name`) VALUES (NULL, '', '0', '$key_grant', '$pid', '0', '$qty', '$amount', '$amount_unit', '0', '$user_id', 'admin', 'admin', '0', '$dated', '1', '$dated', 'Cash', '0','$items')";
+        $query = "INSERT INTO `sales` (`id`, `sales_id`, `shop_id`, `store_key`, `product_id`, `shop_prod_id`, `qty`, `price_sold`, `selling_price`, `cost_price`, `seller_id`, `seller_name`, `seller_type`, `returned`, `date_sold`, `week`, `month`, `payment_method`, `customer`, `item_name`) VALUES (NULL, 'new', '0', '$key_grant', '$pid', '0', '$qty', '$amount', '$amount_unit', '0', '$user_id', 'admin', 'admin', '0', '$dated', '1', '$dated', 'Cash', '0','$items')";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -447,7 +458,7 @@ class controller extends dbc
         }
     }
 
-    public function add_new_items($img_path1,$img_path2,$img_path3,$img_path4,$cat1, $cat2, $cat3, $cat4, $item_type, $cat_type, $key_grant, $vendor, $item_name, $attribute, $item_size, $qty, $description, $aval_qty, $reorder, $unit, $barcode, $upc, $extra_info, $regular_price, $order_price, $avg_unit_cost, $tax)
+    public function add_new_items($img_path1, $img_path2, $img_path3, $img_path4, $cat1, $cat2, $cat3, $cat4, $item_type, $cat_type, $key_grant, $vendor, $item_name, $attribute, $item_size, $qty, $description, $aval_qty, $reorder, $unit, $barcode, $upc, $extra_info, $regular_price, $order_price, $avg_unit_cost, $tax)
     {
         $dated = date('d-m-Y');
         $query = "INSERT INTO `product_tables` (`pid`, `key_grant`, `item_type`, `category_inventory`, `items_name`, `vendor_id`, `description_inventory`, `attribute`, `item_size`, `on_hand_qty`, `aval_qty`, `reorder_point`, `unit_measurement`, `barcode`, `upc`, `alt_look_up`, `regular_price`, `order_price`, `average_unit_cost`, `tax`, `photo1`, `photo2`, `photo3`, `photo4`, `cat1`, `cat2`, `cat3`, `cat4`) VALUES (NULL, '$key_grant', '$item_type', '$cat_type', '$item_name', '$vendor', '$description', '$attribute', '$item_size', '$qty', '$aval_qty', '$reorder', '$unit', '$barcode', '$upc', '$extra_info', '$regular_price', '$order_price', '$avg_unit_cost', '$tax', '$img_path1', '$img_path2', '$img_path3', '$img_path4', '$cat1', '$cat2', '$cat3', '$cat4')";
@@ -472,7 +483,7 @@ class controller extends dbc
         }
     }
 
-    public function edit_product_basic($pid,$key_grant,$cat_type,$vendor,$item_name,$description,$attribute,$item_size,$iqty,$aval_qty,$reorder,$unit,$barcode,$upc,$extra_info,$regular_price,$order_price,$avg_unit_cost,$tax)
+    public function edit_product_basic($pid, $key_grant, $cat_type, $vendor, $item_name, $description, $attribute, $item_size, $iqty, $aval_qty, $reorder, $unit, $barcode, $upc, $extra_info, $regular_price, $order_price, $avg_unit_cost, $tax)
     {
         $dated = date('d-m-Y');
         $query = "UPDATE product_tables SET category_inventory='$cat_type',items_name='$item_name',vendor_id='$vendor',description_inventory='$description',attribute='$attribute',item_size='$item_size',on_hand_qty='$iqty',`aval_qty`='$aval_qty',reorder_point='$reorder',unit_measurement='$unit',barcode='$barcode',upc='$upc',alt_look_up='$extra_info',regular_price='$regular_price',order_price='$order_price', average_unit_cost='$avg_unit_cost',tax='$tax' WHERE pid='$pid' and key_grant='$key_grant'";
@@ -485,9 +496,9 @@ class controller extends dbc
     }
 
 
-    public function edit_image1($pid,$key_grant,$img_path1)
+    public function edit_image1($pid, $key_grant, $img_path1)
     {
-         $query = "UPDATE product_tables SET photo1='$img_path1' WHERE pid='$pid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET photo1='$img_path1' WHERE pid='$pid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -497,9 +508,9 @@ class controller extends dbc
     }
 
 
-    public function edit_image2($pid,$key_grant,$img_path2)
+    public function edit_image2($pid, $key_grant, $img_path2)
     {
-         $query = "UPDATE product_tables SET photo2='$img_path2' WHERE pid='$pid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET photo2='$img_path2' WHERE pid='$pid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -509,19 +520,9 @@ class controller extends dbc
     }
 
 
-    public function edit_image3($pid,$key_grant,$img_path3)
+    public function edit_image3($pid, $key_grant, $img_path3)
     {
-         $query = "UPDATE product_tables SET photo3='$img_path3' WHERE pid='$pid' and key_grant='$key_grant'";
-        $run_qry = $this->run_query($query);
-        if ($run_qry == true) {
-            return "success";
-        } else {
-            return "Invalid Command";
-        }
-    }
-    public function edit_image4($pid,$key_grant,$img_path4)
-    {
-         $query = "UPDATE product_tables SET photo4='$img_path4' WHERE pid='$pid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET photo3='$img_path3' WHERE pid='$pid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -530,9 +531,9 @@ class controller extends dbc
         }
     }
 
-    public function update_shop_item_cat($pid,$key_grant,$cat1,$cat2,$cat3,$cat4)
+    public function edit_image4($pid, $key_grant, $img_path4)
     {
-         $query = "UPDATE product_tables SET cat1='$cat1',cat2='$cat2',cat3='$cat3',cat4='$cat4' WHERE pid='$pid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET photo4='$img_path4' WHERE pid='$pid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -541,9 +542,9 @@ class controller extends dbc
         }
     }
 
-    public function update_ads_cats($ads_id,$pid,$key_grant)
+    public function update_shop_item_cat($pid, $key_grant, $cat1, $cat2, $cat3, $cat4)
     {
-         $query = "UPDATE product_tables SET ads='$ads_id' WHERE pid='$pid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET cat1='$cat1',cat2='$cat2',cat3='$cat3',cat4='$cat4' WHERE pid='$pid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -552,9 +553,20 @@ class controller extends dbc
         }
     }
 
-    public function update_ads_cats_list($sid,$key_grant)
+    public function update_ads_cats($ads_id, $pid, $key_grant)
     {
-         $query = "UPDATE product_tables SET ads='0' WHERE pid='$sid' and key_grant='$key_grant'";
+        $query = "UPDATE product_tables SET ads='$ads_id' WHERE pid='$pid' and key_grant='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+    public function update_ads_cats_list($sid, $key_grant)
+    {
+        $query = "UPDATE product_tables SET ads='0' WHERE pid='$sid' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -581,9 +593,14 @@ class controller extends dbc
         return $this->runner($query);
     }
 
-    public function empty_carts($ads_id,$key_grant)
+    public function empty_carts($ads_id, $key_grant)
     {
         $query = "delete from sales where id='$ads_id' and store_key='$key_grant' limit 1";
+        return $this->runner($query);
+    }
+    public function empty_carting($key_grant)
+    {
+        $query = "delete from sales where store_key='$key_grant'";
         return $this->runner($query);
     }
 
@@ -710,12 +727,24 @@ class controller extends dbc
         $user_list[] = $obj;
         return $obj;
     }
+
     public function count_category_($public_key)
     {
         $query = "SELECT count(id) AS total_category FROM custom_category where user_key='$public_key' AND status=1";
         $row = $this->get_result($this->run_query($query));
         $obj = new stdClass();
         $obj->total_category = $row['total_category'];
+        $user_list[] = $obj;
+        return $obj;
+    }
+
+
+    public function sum_carts($public_key)
+    {
+        $query = "SELECT SUM(price_sold) AS price_sold FROM sales where store_key='$public_key' and sales_id='new'";
+        $row = $this->get_result($this->run_query($query));
+        $obj = new stdClass();
+        $obj->price_sold = $row['price_sold'];
         $user_list[] = $obj;
         return $obj;
     }
@@ -772,7 +801,7 @@ class controller extends dbc
         return ($categories);
     }
 
-    public function fetch_all_items_ads($key_grant,$sid)
+    public function fetch_all_items_ads($key_grant, $sid)
     {
         $query = "SELECT * FROM product_tables WHERE key_grant='$key_grant' and ads='$sid'";
         $query = $this->run_query($query);
@@ -846,7 +875,7 @@ class controller extends dbc
     }
 
 
-        public function edit_item_all($public_key,$sid)
+    public function edit_item_all($public_key, $sid)
     {
         $query = "SELECT * FROM product_tables WHERE key_grant='$public_key' and pid='$sid'";
         $row = $this->get_result($this->run_query($query));
@@ -899,7 +928,7 @@ class controller extends dbc
 
     public function fetch_carts($key_grants)
     {
-        $query = "select * from sales where store_key='$key_grants' and seller_type='admin'";
+        $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id='new'";
         $qx = $this->run_query($query);
         $user_list = array();
         while ($row = $this->get_result($qx)) {
@@ -929,14 +958,35 @@ class controller extends dbc
 
 
 
-
-
-
-
-
-
-
-
+    public function print_sales($key_grants)
+    {
+         $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id!='new' group by sales_id";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->sales_id = $row['sales_id'];
+            $obj->shop_id = $row['shop_id'];
+            $obj->store_key = $row['store_key'];
+            $obj->product_id = $row['product_id'];
+            $obj->shop_prod_id = $row['shop_prod_id'];
+            $obj->qty = $row['qty'];
+            $obj->price_sold = $row['price_sold'];
+            $obj->selling_price = $row['selling_price'];
+            $obj->cost_price = $row['cost_price'];
+            $obj->seller_name = $row['seller_name'];
+            $obj->seller_type = $row['seller_type'];
+            $obj->returned = $row['returned'];
+            $obj->date_sold = $row['date_sold'];
+            $obj->month = $row['month'];
+            $obj->payment_method = $row['payment_method'];
+            $obj->customer = $row['customer'];
+            $obj->item_name = $row['item_name'];
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
 
 
 
@@ -990,8 +1040,6 @@ class controller extends dbc
         }
         return $user_list;
     }
-
-
 
 
     public function add_bansks($bn, $acn, $bads)

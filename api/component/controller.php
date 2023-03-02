@@ -596,6 +596,7 @@ class controller extends dbc
         }
     }
 
+
     //validate user email
     public function validateUserEmail($email,$public_key)
     {

@@ -11,7 +11,12 @@ $app = new controller;
     ?>
 </head>
 <body class="theme-cyan">
-
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="../logo/lentose1.png" height="150" alt="Lentose"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
 <div id="wrapper">
     <?php
     require_once 'component/header.php';
@@ -87,7 +92,7 @@ $app = new controller;
                                                          style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                         <a href="ecom_category_two.php?sid=<?= base64_encode($cc->id); ?>&&sib=<?= base64_encode($cc->category_postomg); ?>" class="dropdown-item cc" style="cursor: pointer">Sub-category</a>
                                                         <hr>
-                                                        <a class="dropdown-item" style="cursor: pointer"
+                                                        <a class="dropdown-item cc" style="cursor: pointer"
                                                            data-info="<?= $cc->category_postomg; ?>"
                                                            data-id="<?= $cc->id; ?>">Edit</a>
 

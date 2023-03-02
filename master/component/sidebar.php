@@ -50,7 +50,7 @@
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893610.png"  height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
                             <ul>
                                 <li><a href="carts">New Sales Order</a></li>
-                                <li><a href="">New Sales Receipt</a></li>
+                                <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
 <!--                                <li><a href="">New Payout</a></li>-->
 

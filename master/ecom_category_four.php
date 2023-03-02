@@ -15,7 +15,12 @@ $get_ls = base64_decode($app->get_request('ls'));
     ?>
 </head>
 <body class="theme-cyan">
-
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="../logo/lentose1.png" height="150" alt="Lentose"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
 <div id="wrapper">
     <?php
     require_once 'component/header.php';
@@ -88,7 +93,7 @@ $get_ls = base64_decode($app->get_request('ls'));
                                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"
                                                          x-placement="top-start"
                                                          style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        <a class="dropdown-item" style="cursor: pointer"
+                                                        <a class="dropdown-item cc" style="cursor: pointer"
                                                            data-info="<?= $cc->category_postomg; ?>"
                                                            data-id="<?= $cc->id; ?>">Edit</a>
 

@@ -3,6 +3,12 @@
     include_once '../component/user_data.php';
     $add_roles = new controller;
 
+
+
+    $cat1 = $add_roles->post_request('cat1');
+    $cat2 = $add_roles->post_request('cat2');
+    $cat3 = $add_roles->post_request('cat3');
+    $cat4 = $add_roles->post_request('cat4');
     $pid = $add_roles->post_request('pid');
     $get_all_items = $add_roles->edit_item_all($key_grant,$pid);
 
@@ -75,7 +81,6 @@
     //update image 1
     if ($img_path1 == "") {
     } else {
-
         $newrolesx = $add_roles->edit_image1($pid,$key_grant,$img_path1);
         unlink($get_all_items->photo1);
     }

@@ -75,7 +75,7 @@ $app = new controller;
                                     <span>Remember me</span>
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block font-weight-bold btn-outline" id="logs" name="auth_user">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block font-weight-bold btn-outline" name="auth_user">
                                 Login
                             </button>
 
@@ -94,23 +94,3 @@ $app = new controller;
 
 </body>
 </html>
-<script src="assets/bundles/libscripts.bundle.js"></script>
-<script src="assets/bundles/vendorscripts.bundle.js"></script>
-<script src="assets/bundles/datatablescripts.bundle.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
-<script src="../assets/vendor/sweetalert/sweetalert.min.js"></script>
-<script src="assets/bundles/mainscripts.bundle.js"></script>
-<script src="assets/js/pages/tables/jquery-datatable.js"></script>
-<script src="../assets/vendor/toastr/toastr.js"></script>
-<script>
-    // $(document).on('click', '#logs', function () {
-    //     //e.preventDefault();
-    // var btn = $("#logs");
-    // btn.attr('disabled', true).html("<i class='fa fa-spin fa-spinner'></i> processing");
-    // });
-
-</script>

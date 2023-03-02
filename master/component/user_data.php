@@ -12,7 +12,6 @@
     $userInfo = $app->get_user_data($_SESSION['login_user']);
     $key_grant = $userInfo->key_grant;
     $business_name = $userInfo->business_name;
-    $user_id = $userInfo->id;
 
     
     
