@@ -92,7 +92,9 @@
 
                                 <li><a href="vendor-list.php">Suppliers</a></li>
 
+
                                 <!-- <li><a href="blog-details.html">Department List</a></li> -->
+
 
                                 <li><a href="adjustment-history.php">Quantity Adjustment History</a></li>
                                 <li><a href="cost-history.php">Cost Adjustment History</a></li>
@@ -136,6 +138,7 @@
                                 <li><a href="">Held Voucher</a></li>
                                 <li><a href="">Purchase Order List</a></li>
                                 <li><a href="page-pricing.php">Vendor List</a></li>
+                                <li><a href="">View Transaction</a></li>
                                 <li><a href="">Suggest POs</a></li>
                             </ul>
                         </li>
