@@ -4,7 +4,7 @@
     $app = new controller;
     $user_log = $app->checkLogin();
     if ($user_log == "logged") {
-        //echo "ok";
+        ///echo "ok";
     } else {
         echo '<script>window.location.href="./page-login.php";</script>';
     }
