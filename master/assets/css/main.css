@@ -2469,9 +2469,10 @@ html.fullscreen-bg #wrapper {
 }
 
 .navbar-fixed-top .navbar-brand img {
-    width: 98px;
+    margin-left: 8px;
+    width: 130px;
     vertical-align: top;
-    margin-top: 2px
+    margin-top: -4px;
 }
 
 .navbar-fixed-top .navbar-right {
@@ -2885,9 +2886,9 @@ html.fullscreen-bg #wrapper {
 }
 
 .user-account .user-photo {
-    width: 50px;
+    width: 117px;
     vertical-align: top;
-    border: 2px solid #dfdede
+    /* border: 2px solid #dfdede; */
 }
 
 .user-account .user-name {
@@ -2978,6 +2979,8 @@ html.fullscreen-bg #wrapper {
 }
 
 .sidebar-nav .metismenu a {
+    /* margin: -6px; */
+    padding: 10px;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
     -ms-transition: all .3s ease-out;
@@ -2986,8 +2989,9 @@ html.fullscreen-bg #wrapper {
     position: relative;
     padding: 13px 15px;
     outline-width: 0;
-    color: #17191c;
-    font-size: 15px
+    color: #444444;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .sidebar-nav .metismenu ul a {
@@ -8619,7 +8623,7 @@ ul.choose-skin li span,
     width: 100%;
     height: 320px
 }
- 
+
 
 .panel-switch-btn {
     position: relative;
@@ -9642,6 +9646,9 @@ ul.list-connected-app>li:last-child .connected-app {
     margin-bottom: 0
 }
 
+.side_bar_adjust{
+    padding-left: 10px
+}
 .appliances-grp .content p span {
     float: right
 }
