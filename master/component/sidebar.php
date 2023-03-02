@@ -33,18 +33,6 @@
                     <ul id="main-menu" class="metismenu">
                         <li class="active">
                             <a href="user_dir.php" ><img src="https://cdn-icons-png.flaticon.com/512/748/748060.png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
-                            <!-- class="has-arrow" -->
-                            <!-- <ul>
-                            <li class="active"><a href="index.html">Analytical</a></li>
-                            <li><a href="index2.html">Demographic</a></li>
-                            <li><a href="index3.html">Hospital</a></li>
-                            <li><a href="index4.html">University</a></li>
-                            <li><a href="index5.html">Real Estate</a></li>
-                            <li><a href="index6.html">Project</a></li>
-                            <li><a href="index7.html">Cryptocurrency</a></li>
-                            <li><a href="index8.html">eCommerce</a></li>
-                            <li><a href="index9.html">IoT</a></li>
-                            </ul> -->
                         </li>
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893610.png"  height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
@@ -52,15 +40,8 @@
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
-<!--                                <li><a href="">New Payout</a></li>-->
-
-<!--                                <li><a href="">New Layaway <span class="badge badge-warning float-right">New</span></a></li>-->
-<!--                                <li><a href="">New Work Order</a></li>-->
                                 <li><a href="">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
-<!--                                <li><a href="">Sales Order List</a></li>-->
-<!--                                <li><a href="">Layaway List</a></li>-->
-<!--                                <li><a href="">Work Order List</a></li>-->
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
                         </li>
@@ -84,7 +65,6 @@
                                 <li><a href="cost-adjustment.php">New Cost Adjustment</a></li>
 
                                 <li><a href="vendor-list.php">Suppliers</a></li>
-                                <!-- <li><a href="blog-details.html">Department List</a></li> -->
                                 <li><a href="adjustment-history.php">Quantity Adjustment History</a></li>
                                 <li><a href="cost-history.php">Cost Adjustment History</a></li>
                                 <li><a href="held-memos.php">Held Quantity Memos</a></li>
@@ -113,6 +93,7 @@
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/9013/9013720.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
                             <ul>
+                                <li><a href="ecom-customers.php">Customers</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
