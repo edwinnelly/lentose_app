@@ -33,8 +33,6 @@
                     <ul id="main-menu" class="metismenu">
                         <li class="active">
                             <a href="user_dir.php" ><img src="https://cdn-icons-png.flaticon.com/512/748/748060.png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
-<<<<<<< HEAD
-=======
 
                             <!-- class="has-arrow" -->
                             <!-- <ul>
@@ -49,7 +47,6 @@
                             <li><a href="index9.html">IoT</a></li>
                             </ul> -->
 
->>>>>>> 0d64618894f7d882885432af0ac449fb96392b22
                         </li>
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893610.png"  height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
@@ -57,10 +54,6 @@
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
-<<<<<<< HEAD
-                                <li><a href="">Sales History</a></li>
-                                <li><a href="">Held Receipts</a></li>
-=======
 
 <!--                                <li><a href="">New Payout</a></li>-->
 
@@ -75,7 +68,6 @@
                                 <li><a href="">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
 
->>>>>>> 0d64618894f7d882885432af0ac449fb96392b22
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
                         </li>
@@ -99,12 +91,11 @@
                                 <li><a href="cost-adjustment.php">New Cost Adjustment</a></li>
 
                                 <li><a href="vendor-list.php">Suppliers</a></li>
-<<<<<<< HEAD
-=======
+
 
                                 <!-- <li><a href="blog-details.html">Department List</a></li> -->
 
->>>>>>> 0d64618894f7d882885432af0ac449fb96392b22
+
                                 <li><a href="adjustment-history.php">Quantity Adjustment History</a></li>
                                 <li><a href="cost-history.php">Cost Adjustment History</a></li>
                                 <li><a href="held-memos.php">Held Quantity Memos</a></li>
@@ -133,15 +124,10 @@
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/9013/9013720.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
                             <ul>
-<<<<<<< HEAD
-                                <li><a href="ecom-customers.php">Customers</a></li>
-                                <li><a href="customer_history.php">Customer History</a></li>
-=======
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
                                 <li><a href="ecom-customers.php">Customer History</a></li>
 
->>>>>>> 0d64618894f7d882885432af0ac449fb96392b22
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
