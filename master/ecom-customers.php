@@ -28,7 +28,7 @@ $app = new controller;
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-12">
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
-                                        class="fa fa-arrow-left"></i></a>Customer List</h2>
+                                        class="fa fa-arrow-left"></i></a>Shop Customer List</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">Add</li>
@@ -45,7 +45,7 @@ $app = new controller;
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2> Customer List <small>You can edit and block Customer here</small></h2>
+                            <h2>Shop Customer List <small>You can edit and block Customer here</small></h2>
                         </div>
                         <div class="col-lg-12 ">
 
@@ -54,8 +54,10 @@ $app = new controller;
                             <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                 <thead>
                                 <tr>
-                                    <th> #</th>
+                                    <th> S/N</th>
                                     <th>Customer code</th>
+                                    <th>Customer Name</th>
+                                    <th>Email</th>
                                     <th>Address</th>
                                     <th>City</th>
                                     <th>State</th>
@@ -63,7 +65,6 @@ $app = new controller;
                                     <th>Phone</th>
                                     <th>Alternate phone</th>
                                     <th>Inactive</th>
-                                    <th>Email</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -77,7 +78,8 @@ $app = new controller;
                                     <tr>
                                         <th scope="row"><?= $count; ?></th>
                                         <td><?= $cc->vendor_code; ?></td>
-                                        <!-- <td><?= $cc->vendor_name; ?></td> -->
+                                        <td><?= $cc->vendor_name; ?></td>
+                                        <td><?= $cc->email; ?></td>
                                         <td><?= $cc->address; ?></td>
                                         <td><?= $cc->city; ?></td>
                                         <td><?= $cc->state; ?></td>
@@ -85,10 +87,6 @@ $app = new controller;
                                         <td><?= $cc->phone; ?></td>
                                         <td><?= $cc->phone2; ?></td>
                                         <td><?= $cc->status; ?></td>
-                                        <!-- <td><?= $cc->note; ?></td> -->
-                                        <td><?= $cc->email; ?></td>
-                                        <!-- <td><?= $cc->website; ?></td> -->
-
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <button id="btnGroupDrop1" type="button"

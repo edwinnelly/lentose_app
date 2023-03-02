@@ -94,6 +94,7 @@
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/9013/9013720.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
                             <ul>
                                 <li><a href="ecom-customers.php">Customers</a></li>
+                                <li><a href="ecom-customers.php">Customer History</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
