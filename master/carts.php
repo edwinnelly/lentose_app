@@ -236,14 +236,17 @@ $app = new controller;
                                 cache: false,
                                 processData: false,
                                 success: (data) => {
+                                    console.log(data)
                                 if(data.trim() == "done") {
                                 toastr.success('Payment Completed.', 'Success');
                                 setTimeout(
                                     function () {
                                         window.location.href = 'carts';
                                     }, 3000);
-//                                
+//
                             } else {
+
+                                    toastr.success(data, 'Success');
                             }
                         },
 
@@ -293,6 +296,24 @@ $app = new controller;
                         });
 
 
+                        $("#payme").on('change', (function(e) {
+                            var tic_id = $('#payme').val();
+                          if(tic_id==='Cheque'){
+                              $.ajax({
+                                  url: "script/add_cheque_num",
+                                  type: "GET",
+                                  data: {
+                                      tic_id: tic_id
+                                  },
+                                  success: function(data) {
+
+                                      $('#chq').html(data);
+                                  },
+
+                              });
+                          }
+
+                        }));
 
                     })
                 </script>
@@ -381,7 +402,7 @@ $app = new controller;
                             <div class="form-group">
                                 <label>Select Payment Method</label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="payment">
+                                        data-placeholder="Select" name="payment" id="payme">
                                     <option>Cash</option>
                                     <option>POS</option>
                                     <option>Transfer</option>
@@ -389,19 +410,26 @@ $app = new controller;
                                     <option>Cash_POS</option>
                                     <option>Cash_Transfer</option>
                                     <option>Cash_POS_Transfer</option>
+                                    <option>Cheque</option>
                                     <option>Others</option>
 
                                 </select>
                             </div>
                         </div>
 
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <div id="chq"> </div>
+                                </div>
+                                </div>
+
                         <div class="col-10">
                             <div class="form-group">
-                                <label>Send Invoice To Customer Email</label>
+                                <label>Dispatch Item</label>
                                 <select class="form-control show-tick ms select2"
                                         data-placeholder="Select" name="em">
-                                    <option>No</option>
-                                    <option>Yes</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
                         </div>
@@ -424,5 +452,3 @@ $app = new controller;
         </form>
     </div>
 </div>
-
-

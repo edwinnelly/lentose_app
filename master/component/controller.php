@@ -336,6 +336,17 @@ class controller extends dbc
         }
     }
 
+    public function update_qty($product_id,$qty, $key_grant)
+    {
+        echo $query = "update product_tables set on_hand_qty='$qty' where pid='$product_id' and key_grant='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
     public function update_product_category_ecom_four($infos, $pid_key, $key_grant)
     {
         $query = "update category_four set category_name='$infos' where id='$pid_key' and store_key='$key_grant'";
@@ -951,6 +962,11 @@ class controller extends dbc
             $obj->payment_method = $row['payment_method'];
             $obj->customer = $row['customer'];
             $obj->item_name = $row['item_name'];
+
+            $get_prod_list = $this->edit_item_all($row['store_key'],$row['product_id']);
+            $obj->live_qty = $get_prod_list->on_hand_qty-$row['qty'];
+            $obj->live_pid = $get_prod_list->pid;
+
             $user_list[] = $obj;
         }
         return $user_list;
