@@ -314,9 +314,9 @@ class controller extends dbc
         }
     }
 
-    public function update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id)
+    public function update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id,$chqe)
     {
-        $query = "update sales set sales_id='$trans_id',payment_method='$payment', customer='$customer' where sales_id='new' and store_key='$key_grant'";
+        $query = "update sales set sales_id='$trans_id',payment_method='$payment', customer='$customer',cheque_id='$chqe' where sales_id='new' and store_key='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -338,7 +338,7 @@ class controller extends dbc
 
     public function update_qty($product_id,$qty, $key_grant)
     {
-        echo $query = "update product_tables set on_hand_qty='$qty' where pid='$product_id' and key_grant='$key_grant'";
+         $query = "update product_tables set on_hand_qty='$qty' where pid='$product_id' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -4182,7 +4182,7 @@ class controller extends dbc
 
     public function cash_cr($s, $e)
     {
-        echo $query = "SELECT SUM(cr) AS cash_c FROM cash_report where date_cr<'$s'";
+         $query = "SELECT SUM(cr) AS cash_c FROM cash_report where date_cr<'$s'";
         $row = $this->get_result($this->run_query($query));
         $obj = new stdClass();
         $obj->cash_c = $row['cash_c'];

@@ -253,9 +253,6 @@ $app = new controller;
                         });
                         }));
 
-
-
-
                         $(document).on('click', '.edel', function () {
                             var btn = $(".edel");
                             btn.attr('disabled', true).html("<i class='fa fa-spin fa-spinner'></i> processing");
@@ -299,6 +296,11 @@ $app = new controller;
                         $("#payme").on('change', (function(e) {
                             var tic_id = $('#payme').val();
                           if(tic_id==='Cheque'){
+                              toastr.success('Please Note That the payment ID is required.', 'Cheque Payment');
+                              // hide toastr notification after 3 seconds
+                              setTimeout(function() {
+                                  toastr.clear();
+                              }, 10000);
                               $.ajax({
                                   url: "script/add_cheque_num",
                                   type: "GET",
@@ -433,9 +435,6 @@ $app = new controller;
                                 </select>
                             </div>
                         </div>
-
-
-
 
                         <div class="col-12">
                             <input type="hidden" id="pid" name="pid">
