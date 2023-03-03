@@ -39,9 +39,7 @@
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
-                                <li><a href="">Sales History</a></li>
-                                <li><a href="">Held Receipts</a></li>
-                                <li><a href="">Sales History</a></li>
+                                <li><a href="sales_history.php">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
