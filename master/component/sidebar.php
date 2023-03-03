@@ -94,8 +94,12 @@
                             <ul>
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
+<<<<<<< Updated upstream
                                 <li><a href="customer_history.php">Customer History</a></li>
                                 <li><a href="customer_order.php">Customer Order</a></li>
+=======
+                                <li><a href="orders.php">Orders</a></li>
+>>>>>>> Stashed changes
                                 <li><a href="customer_history">Customer History</a></li>
                                 <li><a href="customer_order">Customer Order</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
