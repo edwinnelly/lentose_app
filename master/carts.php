@@ -13,7 +13,7 @@ $app = new controller;
 <body class="theme-cyan">
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="../logo/lentose1.png" height="150" alt="Lentose"></div>
+        <div class="m-t-30"><img src="../logo/lentose.png" height="150" alt="Lentose" style="height: 50px"></div>
         <p>Please wait...</p>
     </div>
 </div>

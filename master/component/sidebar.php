@@ -1,7 +1,7 @@
 <div id="left-sidebar" class="sidebar">
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="icons/logo2.png" class="rounded- user-photo" width="200" alt="User Profile Picture">
+            <img src="../logo/lentose.png" class="rounded- user-photo" style="width: 60px" alt="User Profile Picture">
 
             <hr>
             <ul class="row list-unstyled">
