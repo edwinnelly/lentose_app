@@ -6,7 +6,7 @@ $app = new controller;
 <html lang="en">
 
 <head>
-    <title>Customer List</title>
+    <title>Orders</title>
     <?php
     require_once 'component/meta_config.php';
     ?>
@@ -29,11 +29,11 @@ $app = new controller;
                 <div class="block-header">
                     <div class="row">
                         <div class="col-lg-5 col-md-8 col-sm-12">
-                            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Customer List</h2>
+                            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Orders</h2>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
-                                <li class="breadcrumb-item">Add</li>
-                                <li class="breadcrumb-item active">Edit</li>
+                                <!-- <li class="breadcrumb-item">Add</li> -->
+                                <!-- <li class="breadcrumb-item active">Edit</li> -->
                             </ul>
                         </div>
                         <div class="col-lg-7 col-md-4 col-sm-12 text-right">
@@ -43,14 +43,13 @@ $app = new controller;
                             </div>
                         </div>
                     </div>
-                    <!-- start from here tomorrow ================================================================================================================ -->
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2> Customer List <small>You can add, edit or delete Customer here</small></h2>
-                                <a href="new-customer">
-                                    <button class="btn btn-primary float-right">Add Customer</button>
-                                </a>
+                                <h2>Orders <small>You can view products here</small></h2>
+                                <!-- <a href="new-customer">
+                                    <button class="btn btn-primary float-right">By Customer</button>
+                                </a> -->
                             </div>
                             <div class="col-lg-12 ">
 
@@ -59,18 +58,13 @@ $app = new controller;
                                 <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                     <thead>
                                         <tr>
-                                            <th> #</th>
-                                            <th>Customer code</th>
-                                            <th>Customer Name</th>
-                                            <th>Street</th>
-                                            <th>City</th>
-                                            <th>State</th>
-                                            <th>ZIP</th>
-                                            <th>Phone</th>
-                                            <th>Alternate phone</th>
-                                            <th>Inactive</th>
-                                            <th>Suppliers Note</th>
-                                            <th>Email</th>
+                                            <th> S/N</th>
+                                            <th>Order code</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Branch</th>
+                                            <th>Date Created</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -85,25 +79,26 @@ $app = new controller;
                                                 <th scope="row"><?= $count; ?></th>
                                                 <td><?= $cc->vendor_code; ?></td>
                                                 <td><?= $cc->vendor_name; ?></td>
+                                                <td><?= $cc->email; ?></td>
                                                 <td><?= $cc->address; ?></td>
                                                 <td><?= $cc->city; ?></td>
                                                 <td><?= $cc->state; ?></td>
-                                                <td><?= $cc->zip; ?></td>
-                                                <td><?= $cc->phone; ?></td>
-                                                <td><?= $cc->phone2; ?></td>
-                                                <td><?= $cc->status; ?></td>
-                                                <td><?= $cc->note; ?></td>
-                                                <td><?= $cc->email; ?></td>
+                                                <!-- <td><?= $cc->zip; ?></td> -->
+                                                
+                                             
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             Action
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                            <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id + 9020); ?>">Edit</a>
+                                                            <!-- <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id + 9020); ?>">View Product</a> -->
+                                                            <a class="dropdown-item" href="../master/customer_order.php">Customer Order</a>
+                                                            <!-- <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id + 9020); ?>">Customer Details</a> -->
 
                                                             <hr>
-                                                            <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>" data-id="<?= $cc->id; ?>">Delete</a>
+                                                            <!-- <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>"
+                                                       data-id="<?= $cc->id; ?>">Block</a> -->
                                                         </div>
                                                     </div>
                                                 </td>

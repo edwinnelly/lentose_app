@@ -26,27 +26,12 @@
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="index.html#setting"><i class="icon-settings"></i></a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="index.html#question"><i class="icon-question"></i></a></li>
         </ul>
-
         <div class="tab-content p-l-0 p-r-0">
             <div class="tab-pane active" id="menu">
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
                         <li class="active">
                             <a href="user_dir.php" ><img src="https://cdn-icons-png.flaticon.com/512/748/748060.png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
-
-                            <!-- class="has-arrow" -->
-                            <!-- <ul>
-                            <li class="active"><a href="index.html">Analytical</a></li>
-                            <li><a href="index2.html">Demographic</a></li>
-                            <li><a href="index3.html">Hospital</a></li>
-                            <li><a href="index4.html">University</a></li>
-                            <li><a href="index5.html">Real Estate</a></li>
-                            <li><a href="index6.html">Project</a></li>
-                            <li><a href="index7.html">Cryptocurrency</a></li>
-                            <li><a href="index8.html">eCommerce</a></li>
-                            <li><a href="index9.html">IoT</a></li>
-                            </ul> -->
-
                         </li>
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893610.png"  height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
@@ -54,27 +39,16 @@
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
-
-<!--                                <li><a href="">New Payout</a></li>-->
-
-<!--                                <li><a href="">New Layaway <span class="badge badge-warning float-right">New</span></a></li>-->
-<!--                                <li><a href="">New Work Order</a></li>-->
                                 <li><a href="">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
-<!--                                <li><a href="">Sales Order List</a></li>-->
-<!--                                <li><a href="">Layaway List</a></li>-->
-<!--                                <li><a href="">Work Order List</a></li>-->
-
                                 <li><a href="">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
-
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893609.png" height="21"> <span class="side_bar_adjust">Customers</span></a>
                             <ul>
-                                <li><a href="new-customer.php">New Customer<span class="badge badge-warning float-right">New</span></a></li>
                                 <li><a href="customer-list.php">Customers List</a></li>
                                 <li><a href="reward-managers.php">Reward Manager</a></li>
                                 <li><a href="">Create an E-mail Campaign</a></li>
@@ -89,13 +63,7 @@
                                 <li><a href="item_list.php">Item List</a></li>
                                 <li><a href="quality_adjustment.php">New Quality Adjustment</a></li>
                                 <li><a href="cost-adjustment.php">New Cost Adjustment</a></li>
-
                                 <li><a href="vendor-list.php">Suppliers</a></li>
-
-
-                                <!-- <li><a href="blog-details.html">Department List</a></li> -->
-
-
                                 <li><a href="adjustment-history.php">Quantity Adjustment History</a></li>
                                 <li><a href="cost-history.php">Cost Adjustment History</a></li>
                                 <li><a href="held-memos.php">Held Quantity Memos</a></li>
@@ -126,8 +94,9 @@
                             <ul>
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
-                                <li><a href="customer_history">Customer History</a></li>
-                                <li><a href="customer_order">Customer Order</a></li>
+                                <li><a href="customer_history.php">Customer History</a></li>
+                                <li><a href="customer_order.php">Customer Order</a></li>
+                                <li><a href="orders.php">Orders</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
@@ -201,8 +170,7 @@
                                 <li><a href="">New Receiving Voucher> New Vendor</a> </li>
                                 <li><a href="">New style</a></li>
                                 <li><a href="">New Customer</a></li>
-                                <!-- <li><a href="chart-c3.html">C3 Charts</a></li>
-                                <li><a href="chart-gauges.html">Gauges</a></li> -->
+                              
                             </ul>
                         </li>
                         <li>
@@ -238,20 +206,6 @@
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/2529/2529508.png" height="21"> <span class="side_bar_adjust">Logout</span></a>
 
                         </li>
-                        <!-- <li>
-                        <a href="index.html#menu-level-1" class="has-arrow"><i class="icon-tag"></i> <span>Menu Level 1</span></a>
-                        <ul>
-                        <li>
-                        <a href="index.html#menu-level-2" class="has-arrow">Menu Level 2</a>
-                        <ul>
-                        <li><a href="index.html#">Link 1</a></li>
-                        <li><a href="index.html#">Link 2</a></li>
-                        <li><a href="index.html#">Link 3</a></li>
-                        <li><a href="index.html#">Link 4</a></li>
-                        </ul>
-                        </li>
-                        </ul>
-                        </li> -->
                     </ul>
                 </nav>
             </div>
