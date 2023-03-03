@@ -39,9 +39,7 @@
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
                                 <li><a href="">New Return Receipt</a></li>
-                                <li><a href="">Sales History</a></li>
-                                <li><a href="">Held Receipts</a></li>
-                                <li><a href="">Sales History</a></li>
+                                <li><a href="sales_history.php">Sales History</a></li>
                                 <li><a href="">Held Receipts</a></li>
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
@@ -95,7 +93,6 @@
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
                                 <li><a href="customer_history.php">Customer History</a></li>
-                                <li><a href="receipt.php">Customer Receipt</a></li>
                                 <li><a href="customer_order.php">Customer Order</a></li>
                                 <li><a href="orders.php">Orders</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
