@@ -96,6 +96,7 @@
                                 <li><a href="ecom-customers.php">Customers</a></li>
                                 <li><a href="customer_history.php">Customer History</a></li>
                                 <li><a href="customer_order.php">Customer Order</a></li>
+                                <li><a href="orders.php">Orders</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
                                 <li><a href="ads_controls">Ads Category</a></li>
                                 <li><a href="">New Receiving Voucher</a></li>
@@ -169,8 +170,7 @@
                                 <li><a href="">New Receiving Voucher> New Vendor</a> </li>
                                 <li><a href="">New style</a></li>
                                 <li><a href="">New Customer</a></li>
-                                <!-- <li><a href="chart-c3.html">C3 Charts</a></li>
-                                <li><a href="chart-gauges.html">Gauges</a></li> -->
+                              
                             </ul>
                         </li>
                         <li>
@@ -206,20 +206,6 @@
                             <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/2529/2529508.png" height="21"> <span class="side_bar_adjust">Logout</span></a>
 
                         </li>
-                        <!-- <li>
-                        <a href="index.html#menu-level-1" class="has-arrow"><i class="icon-tag"></i> <span>Menu Level 1</span></a>
-                        <ul>
-                        <li>
-                        <a href="index.html#menu-level-2" class="has-arrow">Menu Level 2</a>
-                        <ul>
-                        <li><a href="index.html#">Link 1</a></li>
-                        <li><a href="index.html#">Link 2</a></li>
-                        <li><a href="index.html#">Link 3</a></li>
-                        <li><a href="index.html#">Link 4</a></li>
-                        </ul>
-                        </li>
-                        </ul>
-                        </li> -->
                     </ul>
                 </nav>
             </div>
