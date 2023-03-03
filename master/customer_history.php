@@ -60,13 +60,8 @@ $app = new controller;
                                     <th> S/N</th>
                                     <th>Product code</th>
                                     <th>Product Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>State</th>
-                                    <th>ZIP</th>
-                                    <th>Phone</th>
-                                    <th>Alternate phone</th>
+                                    <th>Sold By</th>
+                                    <th>Branch</th>
                                     <th>Inactive</th>
                                     <th>Action</th>
                                 </tr>
@@ -82,13 +77,8 @@ $app = new controller;
                                         <th scope="row"><?= $count; ?></th>
                                         <td><?= $cc->vendor_code; ?></td>
                                         <td><?= $cc->vendor_name; ?></td>
-                                        <td><?= $cc->email; ?></td>
-                                        <td><?= $cc->address; ?></td>
-                                        <td><?= $cc->city; ?></td>
                                         <td><?= $cc->state; ?></td>
                                         <td><?= $cc->zip; ?></td>
-                                        <td><?= $cc->phone; ?></td>
-                                        <td><?= $cc->phone2; ?></td>
                                         <td><?= $cc->status; ?></td>
                                         <td>
                                             <div class="btn-group" role="group">
@@ -101,11 +91,7 @@ $app = new controller;
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"
                                                      x-placement="top-start"
                                                      style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id+9020); ?>">Edit</a>
-
-                                                    <hr>
-                                                    <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>"
-                                                       data-id="<?= $cc->id; ?>">Block</a>
+                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id+9020); ?>">Return Item</a>
                                                 </div>
                                             </div>
                                         </td>
