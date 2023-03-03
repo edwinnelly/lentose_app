@@ -12,6 +12,7 @@
     $userInfo = $app->get_user_data($_SESSION['login_user']);
     $key_grant = $userInfo->key_grant;
     $business_name = $userInfo->business_name;
+    $phone_number = $userInfo->phone_number;
 
 
     $cc = $app->count_pid_products($key_grant);

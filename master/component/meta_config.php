@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../icon/css/line-awesome.min.css">
 
 <link rel="stylesheet" href="../icon/css/line-awesome.css">
-<!--<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css">
 <link rel="stylesheet" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
 <link rel="stylesheet" href="../assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />

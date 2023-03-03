@@ -46,5 +46,6 @@ try {
 
 
 } catch (\Exception $e) {
-
+  // Code to handle the exception
+      echo "Caught exception: " . $e->getMessage();
 }
