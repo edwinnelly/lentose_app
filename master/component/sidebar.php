@@ -95,6 +95,7 @@
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
                                 <li><a href="customer_history.php">Customer History</a></li>
+                                <li><a href="receipt.php">Customer Receipt</a></li>
                                 <li><a href="customer_order.php">Customer Order</a></li>
                                 <li><a href="orders.php">Orders</a></li>
                                 <li><a href="ecom_category">Product Category</a></li>
