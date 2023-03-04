@@ -4,7 +4,7 @@
             <button type="button" class="btn-toggle-offcanvas"><img src="https://cdn-icons-png.flaticon.com/512/2311/2311524.png" height="30"></i></button>
         </div>
         <div class="navbar-brand">
-<!--            <a href="user_dir.php"><img src="https://cdn-icons-png.flaticon.com/512/9332/9332498.png" alt="Lucid Logo" style="width: 80px" class="img-responsive logo"></a>-->
+            <a href="./user_dir.php"><img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_vine-256.png" class="rounded- user-photo" style="width: 45px;margin-left: 0px" alt="Lentose"></a>
         </div>
         <div class="navbar-right">
             <form id="navbar-search" class="navbar-form search-form">
@@ -18,15 +18,15 @@
                         <a href="" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="fa fa-folder-open-o"></i></a>
                     </li>
                     <li>
-                        <a href="" class="icon-menu  d-lg-block"><img src="https://cdn-icons-png.flaticon.com/512/833/833593.png" style="height: 22px"></a>
+                        <a href="" class="icon-menu  d-lg-block"><img src="https://cdn-icons-png.flaticon.com/512/833/833593.png" style="height: 19px"></a>
                     </li>
                     <li>
-                        <a href="app-chat.html" class="icon-menu"> <img src="https://cdn-icons-png.flaticon.com/512/1370/1370907.png" style="height: 22px"></a>
+                        <a href="app-chat.html" class="icon-menu"> <img src="https://cdn-icons-png.flaticon.com/512/1370/1370907.png" style="height: 19px"></a>
                     </li>
 
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2529/2529521.png" style="height: 22px">
+                            <a href="../user_dir.php"> <img src="https://cdn-icons-png.flaticon.com/512/2529/2529521.png" style="height: 19px"></a>
                             <span class="notification-dot"></span>
                         </a>
                         <ul class="dropdown-menu notifications">
@@ -88,7 +88,7 @@
                     </li>
 
                     <li>
-                        <a href="" class="icon-menu"><img src="https://cdn-icons-png.flaticon.com/512/93/93627.png" style="height: 22px"></a>
+                        <a href="" class="icon-menu"><img src="https://cdn-icons-png.flaticon.com/512/93/93627.png" style="height: 19px"></a>
                     </li>
                 </ul>
             </div>

@@ -1,20 +1,21 @@
 <div id="left-sidebar" class="sidebar">
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="../logo/lentose.png" class="rounded- user-photo" style="width: 60px" alt="User Profile Picture">
+<!--            <img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_vine-256.png" class="rounded- user-photo" style="width: 50px;margin-left: 29px" alt="User Profile Picture">-->
 
-            <hr>
+            <br>
+            <br>
             <ul class="row list-unstyled">
                 <li class="col-4">
-                    <small>Staff</small>
+                    <small class="font-weight-bold">Staff</small>
                     <h6>0</h6>
                 </li>
                 <li class="col-4">
-                    <small>Stores</small>
+                    <small class="font-weight-bold">Stores</small>
                     <h6>0</h6>
                 </li>
                 <li class="col-4">
-                    <small>Items</small>
+                    <small class="font-weight-bold">Items</small>
                     <h6><?php
                         echo $cc->total_prod; ?></h6>
                 </li>
@@ -31,10 +32,10 @@
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
                         <li class="active">
-                            <a href="user_dir.php" ><img src="https://cdn-icons-png.flaticon.com/512/748/748060.png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
+                            <a href="user_dir.php" ><img src="./icon/4213424_building_estate_home_house_property_icon%20(1).png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893610.png"  height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7787524_cart_shopping_shop_ecommerce_buy_icon.png" height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
                             <ul>
                                 <li><a href="carts">New Sales Order</a></li>
                                 <li><a href="sales_receipt">New Sales Receipt</a></li>
@@ -51,7 +52,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893609.png" height="21"> <span class="side_bar_adjust">Customers</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666755_users_group_icon.png" height="21"> <span class="side_bar_adjust">Customers</span></a>
                             <ul>
                                 <li><a href="customer-list.php">Customers List</a></li>
                                 <li><a href="reward-managers.php">Reward Manager</a></li>
@@ -60,7 +61,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/3759/3759321.png" height="21"> <span class="side_bar_adjust">Inventory</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666587_cloud_snow_icon.png" height="21"> <span class="side_bar_adjust">Inventory</span></a>
                             <ul>
                                 <li><a href="item_categories.php">Categories</a></li>
                                 <li><a href="add_items.php"> New Item</a></li>
@@ -78,7 +79,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893628.png" height="21"> <span class="side_bar_adjust">Purchasing</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/622396_bag_shopping_basket_buy_ecommerce_icon.png" height="21"> <span class="side_bar_adjust">Purchasing</span></a>
                             <ul>
                                 <li><a href="">New Receiving Voucher</a></li>
                                 <li><a href="">New Return Voucher</a></li>
@@ -94,7 +95,7 @@
 
 
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/9013/9013720.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/4213403_bill_check_ecommerce_invoice_payment_icon.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
                             <ul>
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
@@ -118,7 +119,7 @@
 
 
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/266/266134.png" height="21"> <span class="side_bar_adjust">Employees</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3671895_group_user_icon.png" height="21"> <span class="side_bar_adjust">Employees</span></a>
                             <ul>
                                 <li><a href="employee-list.php">Employee List</a></li>
                                 <li><a href="">Security</a></li>
@@ -130,7 +131,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893614.png" height="21"> <span class="side_bar_adjust">Financial</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8679238_money_euro_circle_icon.png" height="21"> <span class="side_bar_adjust">Financial</span></a>
                             <ul>
                                 <li><a href="">Connect to QuickBooks</a> </li>
                                 <li><a href="">Debtors List</a> </li>
@@ -138,7 +139,7 @@
                         </li>
                         <li>
 
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/7893/7893632.png" height="21"> <span class="side_bar_adjust">Stores</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3671868_front_store_icon.png" height="21"> <span class="side_bar_adjust">Stores</span></a>
                             <ul>
                                 <li><a href="">Store Exchange Center</a></li>
                                 <li><a href="">Configure Store Exchange</a></li>
@@ -146,7 +147,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/3757/3757941.png" height="21"> <span class="side_bar_adjust">Reports</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7218397_presentation_business_infographic_report_corporate_icon.png" height="21"> <span class="side_bar_adjust">Reports</span></a>
 
                             <ul>
                                 <li><a href="">Report Center</a> </li>
@@ -165,7 +166,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/3757/3757985.png" height="21"> <span class="side_bar_adjust">Windows</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7215822_presentation_business_infographic_report_corporate_icon.png" height="21"> <span class="side_bar_adjust">Windows</span></a>
 
                             <ul>
                                 <li><a href="">New Sales Receipt</a> </li>
@@ -178,7 +179,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/3759/3759326.png" height="21"> <span class="side_bar_adjust">Tools</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/17787557_configuration_settings_gear_options_preferences_icon.png" height="21"> <span class="side_bar_adjust">Tools</span></a>
                             <ul>
                                 <li><a href="">Print Designer</a></li>
                                 <li><a href="">User Information</a></li>
@@ -186,7 +187,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/3759/3759313.png" height="21"> <span class="side_bar_adjust">Help</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3200448_centre_support_service_drawn_men_icon.png" height="21"> <span class="side_bar_adjust">Help</span></a>
                             <ul>
                                 <li><a href="">Help Content</a></li>
                                 <li><a href="">Help on this Window</a></li>
@@ -207,7 +208,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="https://cdn-icons-png.flaticon.com/512/2529/2529508.png" height="21"> <span class="side_bar_adjust">Logout</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666692_power_icon.png" height="21"> <span class="side_bar_adjust">Logout</span></a>
 
                         </li>
                     </ul>

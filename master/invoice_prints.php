@@ -1,6 +1,7 @@
 <?php
 include_once "component/user_data.php";
 $app = new controller;
+$get_ids = base64_decode($app->get_request('sid'));
 ?>
 <!doctype html>
 <html lang="en">
@@ -78,7 +79,7 @@ $app = new controller;
 
                         <div class="card">
                             <div class="body w_user" style="font-weight: bold;color: black;font-size: 20px">
-                                <img class="" src="https://cdn1.iconfinder.com/data/icons/digital-business-i-1/178/Digital_Business_Set-01-02-256.png"
+                                <img class="" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_vine-256.png"
                                      alt="" style="height: 68px;">
                                 <div class="wid-u-info">
                                     <h5 style="font-weight: bold;color: black;font-size: 29px"><?= $business_name; ?></h5>
@@ -90,7 +91,7 @@ $app = new controller;
                                 <div class="row">
                                     <div class="col-3">
                                         <small class="font-weight-bold" style="font-size: 15px">Total Amount</small>
-                                        <h5 class="m-b-0">₦12,345</h5>
+                                        <h5 class="m-b-0">₦<?php $plant =$app->total_paid_carts($get_ids,$key_grant); echo  number_format($plant->price_sold);  ?></h5>
 
                                     </div>
 
@@ -133,7 +134,8 @@ $app = new controller;
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $get_category = $app->fetch_carts($key_grant);
+
+                                    $get_category = $app->view_invoice($key_grant,$get_ids);
                                     $count = 0;
                                     foreach ($get_category as $cc) {
                                         $count++;
@@ -152,9 +154,9 @@ $app = new controller;
                                     ?>
                                     <tr>
                                         <td rowspan="2" colspan="2">Thanks For Your Patronage...</td>
-                                        <td>Sub Total: -</td>
+                                        <td>Sub Total: ₦<?php $plant =$app->total_paid_carts($get_ids,$key_grant); echo  number_format($plant->price_sold);  ?></td>
                                         <td>-</td>
-                                        <td>Total :</td>
+                                        <td>Total : ₦<?php $plant =$app->total_paid_carts($get_ids,$key_grant); echo  number_format($plant->price_sold);  ?></td>
                                     </tr>
                                     </tbody>
                                 </table>

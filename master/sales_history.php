@@ -97,7 +97,7 @@ $app = new controller;
                                                                         </a>
 
                                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                            <a class="dropdown-item" href="view_receipt.php">View Receipt</a>
+                                                                            <a class="dropdown-item" href="invoice_prints?sid=<?= base64_encode($cc->sales_id); ?>">View Receipt</a>
                                                                             <a class="dropdown-item" href="new_return_receipt">Return Items</a>
                                                                             <a class="dropdown-item" href="#">Send Invioce</a>
                                                                         </div>

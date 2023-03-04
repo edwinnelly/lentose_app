@@ -34,6 +34,7 @@ $app = new controller;
                             <li class="breadcrumb-item">Add</li>
                             <li class="breadcrumb-item active">Edit</li>
                         </ul>
+                        <br>
                     </div>
                     <div class="col-lg-7 col-md-4 col-sm-12 text-right">
                         <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
