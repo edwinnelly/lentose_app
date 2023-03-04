@@ -72,7 +72,7 @@ $app = new controller;
                                         $count++;
                                         ?>
                                         <tr>
-                                            <th><?= $count++; ?></th>
+                                            <th><?= $count; ?></th>
                                             <td>
                                                 <b><?= $cc->items_name; ?></b><br><?= $app->stringFormat($cc->description_inventory, 50); ?>
                                                 <label class=""><?= $cc->category_postomg; ?></label></td>
@@ -127,7 +127,7 @@ $app = new controller;
                                         $count++;
                                         ?>
                                         <tr>
-                                            <th><?= $count++; ?></th>
+                                            <th><?= $count; ?></th>
                                             <td><b><?= $app->stringFormat($cc->item_name, 25); ?></b></td>
                                             <td><?= number_format($cc->price_sold); ?></td>
                                             <td><?= $cc->qty; ?></td>
