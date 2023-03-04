@@ -52,7 +52,7 @@ $app = new controller;
                                 <div class="header">
                                     <h2>Basic Info</h2>
                                     <div class="col-lg-12 ">
-                                        <a href="vendor-list">
+                                        <a href="customer-list">
                                             <button class="btn btn-primary float-right font-weight-bold">View Customer</button>
                                         </a>
                                     </div>

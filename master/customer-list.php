@@ -69,7 +69,7 @@ $app = new controller;
                                             <th>Phone</th>
                                             <th>Alternate phone</th>
                                             <th>Inactive</th>
-                                            <th>Suppliers Note</th>
+                                            <th>Customer Note</th>
                                             <th>Email</th>
                                             <th>Action</th>
                                         </tr>

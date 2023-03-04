@@ -977,6 +977,56 @@ class controller extends dbc
     }
 
 
+    public function fetch_sales_history($key_grants)
+    {
+        $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id!='new' group by sales_id";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->sales_id = $row['sales_id'];
+            $obj->shop_id = $row['shop_id'];
+            $obj->store_key = $row['store_key'];
+            $obj->product_id = $row['product_id'];
+            $obj->shop_prod_id = $row['shop_prod_id'];
+            $obj->qty = $row['qty'];
+            $obj->price_sold = $row['price_sold'];
+            $obj->selling_price = $row['selling_price'];
+            $obj->cost_price = $row['cost_price'];
+            $obj->seller_name = $row['seller_name'];
+            $obj->seller_type = $row['seller_type'];
+            $obj->returned = $row['returned'];
+            $obj->date_sold = $row['date_sold'];
+            $obj->month = $row['month'];
+            $obj->payment_method = $row['payment_method'];
+            $obj->customer = $row['customer'];
+            $obj->item_name = $row['item_name'];
+
+            $get_prod_list = $this->edit_item_all($row['store_key'],$row['product_id']);
+            $obj->live_qty = $get_prod_list->on_hand_qty-$row['qty'];
+            $obj->live_pid = $get_prod_list->pid;
+
+            $cus_info = $this->get_customer_data($row['customer'],$row['store_key']);
+            $obj->vendor_name = $cus_info->vendor_name;
+            $obj->phone = $cus_info->phone;
+
+
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
+
+    public function total_paid_carts($sale_id,$key_id)
+    {
+        $query = "SELECT SUM(price_sold) AS price_sold FROM sales where sales_id='$sale_id' and store_key='$key_id'";
+        $row = $this->get_result($this->run_query($query));
+        $obj = new stdClass();
+        $obj->price_sold = $row['price_sold'];
+        return $obj;
+    }
+
+
 
     public function print_sales($key_grants)
     {
