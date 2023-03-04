@@ -8,6 +8,7 @@
     } else {
         echo '<script>window.location.href="./page-login.php";</script>';
     }
+     $binder =$_SESSION['e_secure'];
     //Get user info
     $userInfo = $app->get_user_data($_SESSION['login_user']);
     $key_grant = $userInfo->key_grant;

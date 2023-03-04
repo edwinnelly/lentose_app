@@ -48,6 +48,7 @@ $app = new controller;
                     <div class="row clearfix">
 
                         <form method="post" id="add_vendors" enctype="multipart/form-data">
+                            <input type="hidden" name="binder" value="<?= $binder;  ?>">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
@@ -415,9 +416,8 @@ $app = new controller;
                                         cache: false,
                                         processData: false,
                                         success: (data) => {
-                                           console.log(data)
                                             if (data.trim() == "done") {
-                                                toastr.success('Compvared.', 'Success');
+                                                toastr.success('Completed.', 'Success');
                                                 setTimeout(
                                                     function () {
                                                         window.location.href = 'add_items.php';

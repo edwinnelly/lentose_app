@@ -2,7 +2,9 @@
     include_once '../component/controller.php';
     include_once '../component/user_data.php';
     $add_roles = new controller;
-
+        if ($_POST['binder'] !== $binder) {
+            die("Invalid CSRF token.");
+        }
     $item_type = $add_roles->post_request('item_type');
     $cat_type = $add_roles->post_request('cat_type');
     $vendor = $add_roles->post_request('vendor');
@@ -97,7 +99,7 @@
     if ($item_name == "") {
         echo "Input Cannot Be Empty";
     } else {
-        $newrolesx = $add_roles->add_new_items($img_path1,$img_path2,$img_path3,$img_path4,$cat1, $cat2, $cat3, $cat4, $item_type, $cat_type, $key_grant, $vendor, $item_name, $attribute, $item_size, $qty, $description, $aval_qty, $reorder, $unit, $barcode, $upc, $extra_info, $regular_price, $order_price, $avg_unit_cost, $tax);
+        $newrolesx = $add_roles->add_new_items($img_path1, $img_path2, $img_path3, $img_path4, $cat1, $cat2, $cat3, $cat4, $item_type, $cat_type, $key_grant, $vendor, $item_name, $attribute, $item_size, $qty, $description, $aval_qty, $reorder, $unit, $barcode, $upc, $extra_info, $regular_price, $order_price, $avg_unit_cost, $tax);
         if ($newrolesx == "success") {
             echo 'done';
         } else {

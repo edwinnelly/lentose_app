@@ -40,6 +40,10 @@ class controller extends dbc
             session_regenerate_id();
             $_SESSION['login_user'] = $data['id']; // Initializing Session
             $_SESSION['email'] = $data['email']; // Initializing Session
+            try {
+                $_SESSION['e_secure'] = bin2hex(random_bytes(32));
+            } catch (Exception $e) {
+            }
             return "success";
         } else {
             return "Invalid";
