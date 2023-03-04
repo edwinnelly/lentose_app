@@ -29,12 +29,13 @@ $app = new controller;
                 <div class="block-header">
                     <div class="row">
                         <div class="col-lg-5 col-md-8 col-sm-12">
-                            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Sales Histroy</h2>
+                            <h4><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Sales Histroy</h4>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                                 <li class="breadcrumb-item">Add</li>
                                 <li class="breadcrumb-item active">Edit</li>
                             </ul>
+                            <br>
                         </div>
                         <div class="col-lg-7 col-md-4 col-sm-12 text-right">
                             <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
@@ -97,7 +98,8 @@ $app = new controller;
                                                                         </a>
 
                                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                            <a class="dropdown-item" href="invoice_prints?sid=<?= base64_encode($cc->sales_id); ?>">View Receipt</a>
+                                                                            <a class="dropdown-item" href="invoice_prints?sid=<?= base64_encode($cc->sales_id); ?>">Print Receipt</a>
+                                                                            <a class="dropdown-item" href="invoice_pos?sid=<?= base64_encode($cc->sales_id); ?>">Print Receipt POS</a>
                                                                             <a class="dropdown-item" href="new_return_receipt">Return Items</a>
                                                                             <a class="dropdown-item" href="#">Send Invioce</a>
                                                                         </div>

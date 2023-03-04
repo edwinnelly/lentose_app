@@ -15,9 +15,29 @@ $category = $app->count_category_($key_grant);
 <html lang="en">
 <head>
     <title>:: Lentose :: Dashboard</title>
-    <?php
-    require_once 'component/meta_config.php';
-    ?>
+    <meta name="description" content="Place the meta description text here.">
+    <meta name=”robots” content="index, follow">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/color_skins.css">
+
+    <style>
+        @media screen and (max-width: 320px) {
+            #cc {
+                visibility: hidden;
+                clear: both;
+                float: left;
+                margin: 10px auto 5px 20px;
+                width: 28%;
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body class="theme-cyan">
 <!--<div class="page-loader-wrapper">-->
@@ -191,10 +211,26 @@ $category = $app->count_category_($key_grant);
 
 <script src="assets/bundles/libscripts.bundle.js"></script>
 <script src="assets/bundles/vendorscripts.bundle.js"></script>
-<script src="assets/bundles/jvectormap.bundle.js"></script>
-<script src="assets/bundles/morrisscripts.bundle.js"></script>
-<script src="assets/bundles/knob.bundle.js"></script>
+<!--<script src="assets/bundles/jvectormap.bundle.js"></script>-->
+<!--<script src="assets/bundles/morrisscripts.bundle.js"></script>-->
+<!--<script src="assets/bundles/knob.bundle.js"></script>-->
 <script src="assets/bundles/mainscripts.bundle.js"></script>
-<script src="assets/js/index8.js"></script>
+<!--<script src="assets/js/index8.js"></script>-->
+<script>
+    const url = 'http://localhost/lentose_app/master/user_dir';
+    const cacheOptions = {
+        headers: {
+            'Cache-Control': 'max-age=3600'
+        }
+    };
+
+    fetch(new Request(url, cacheOptions))
+        .then(response => {
+            // Handle the response
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 </body>
 </html>

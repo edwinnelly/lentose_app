@@ -70,6 +70,8 @@ $get_ids = base64_decode($app->get_request('sid'));
                 <div class="col-lg-12">
                     <div class="card" id="DivIdToPrint">
                         <div class="header">
+                            <img id="cvb" onclick="window.location.href='sales_history'" src="icon/2876986_dashboard_keyboard_keyboard left_left_icon.png" style="width: 30px">
+
                             <button class="fa-pull-right btn btn-primary m-l-30 font-weight-bold" id="ccv"
                                     onclick='printContent("DivIdToPrint");'>Print Report
                             </button>
@@ -134,8 +136,10 @@ $get_ids = base64_decode($app->get_request('sid'));
                                     </thead>
                                     <tbody>
                                     <?php
-
-                                    $get_category = $app->view_invoice($key_grant,$get_ids);
+                                    try {
+                                        $get_category = $app->view_invoice($key_grant,$get_ids);
+                                    }catch (Exception $e){
+                                    }
                                     $count = 0;
                                     foreach ($get_category as $cc) {
                                         $count++;
@@ -188,6 +192,7 @@ $get_ids = base64_decode($app->get_request('sid'));
 
         function printContent(el) {
             $("#ccv").hide();
+            $("#cvb").hide();
             var restorepage = $('body').html();
             var printcontent = $('#' + el).clone();
             $('body').empty().html(printcontent);
