@@ -213,11 +213,11 @@ $category = $app->count_category_($key_grant);
 <script src="assets/bundles/vendorscripts.bundle.js"></script>
 <!--<script src="assets/bundles/jvectormap.bundle.js"></script>-->
 <!--<script src="assets/bundles/morrisscripts.bundle.js"></script>-->
-<!--<script src="assets/bundles/knob.bundle.js"></script>-->
+<script src="assets/bundles/knob.bundle.js"></script>
 <script src="assets/bundles/mainscripts.bundle.js"></script>
-<!--<script src="assets/js/index8.js"></script>-->
+<script src="assets/js/index8.js"></script>
 <script>
-    const url = 'http://localhost/lentose_app/master/user_dir';
+    const url = 'https://lentose.com/master/user_dir';
     const cacheOptions = {
         headers: {
             'Cache-Control': 'max-age=3600'

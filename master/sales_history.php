@@ -131,7 +131,22 @@ $app = new controller;
                             <script src="assets/bundles/mainscripts.bundle.js"></script>
                             <script src="assets/js/pages/tables/jquery-datatable.js"></script>
                             <script src="../assets/vendor/toastr/toastr.js"></script>
+                            <script>
+                                const url = 'https://lentose.com/master/sales_history';
+                                const cacheOptions = {
+                                    headers: {
+                                        'Cache-Control': 'max-age=3600'
+                                    }
+                                };
 
+                                fetch(new Request(url, cacheOptions))
+                                    .then(response => {
+                                        // Handle the response
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
 </body>
 
 </html>

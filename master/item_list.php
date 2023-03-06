@@ -56,7 +56,7 @@ $app = new controller;
                             <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                 <thead>
                                 <tr>
-                                    <th>Item #</th>
+                                    <th> SN</th>
                                     <th>Images</th>
                                     <th>Item Name</th>
                                     <th>Item Description</th>
@@ -75,12 +75,12 @@ $app = new controller;
                                 <tbody>
                                 <?php
                                 $get_category = $app->fetch_all_items($key_grant);
-                                $count = 0;
+                                $count=0;
                                 foreach ($get_category as $cc) {
                                 $count++;
                                 ?>
                                 <tr>
-                                    <th><?= $count++; ?></th>
+                                    <th><?= $count; ?></th>
                                     <td><img src="<?php if($cc->photo1==''){echo 'https://lentose.com/master/icons/iconse.png';}else{echo 'master/'.$cc->photo1;} ?>" alt="Item Image" height="80"></td>
                                     <td><?= $cc->items_name; ?></td>
                                     <td><?= $app->stringFormat($cc->description_inventory, 50); ?></td>
