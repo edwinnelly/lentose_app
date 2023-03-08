@@ -13,7 +13,7 @@ $app = new controller;
 <body class="theme-cyan">
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="../assets/images/logo-icon.svg" width="48" height="48" alt="Lucid"></div>
+        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>
         <p>Please wait...</p>
     </div>
 </div>
@@ -69,15 +69,22 @@ $app = new controller;
                                 </tr>
                                 </thead>
                                 <tbody>
-                               
+
+                                <?php
+                                $get_category = $app->fetch_cheque($key_grant);
+                                $count = 0;
+                                foreach ($get_category as $cc) {
+                                $count++;
+                                ?>
                                     <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <th scope="row"><?= $count; ?></th>
+                                        <td><?= $cc->vendor_name;  ?></td>
+                                        <td><?= $cc->cheque_no;  ?></td>
+                                        <td><?= $cc->amount;  ?></td>
+                                        <td><?= $cc->status;  ?></td>
+                                        <td><?= $cc->due_date;  ?></td>
+                                        <td><?= $cc->created_date;  ?></td>
+
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,8 +92,8 @@ $app = new controller;
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Clear Only</a>
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Clear & Dispatch</a>
+                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve</a>
+                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve & Dispatch</a>
                                                     <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Edit Cheque</a>
                                                     <hr>
                                                     <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>" data-id="<?= $cc->id; ?>">Delete</a>
@@ -95,7 +102,7 @@ $app = new controller;
                                         </td>
                                     </tr>
                                     <?php
-                                
+                                }
                                 ?>
 
                                 </tbody>

@@ -1,10 +1,10 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-btn">
-            <button type="button" class="btn-toggle-offcanvas"><img src="https://cdn-icons-png.flaticon.com/512/2311/2311524.png" height="30"></i></button>
+            <button type="button" class="btn-toggle-offcanvas"><img src="icon/dots.png" height="30"></i></button>
         </div>
         <div class="navbar-brand">
-            <a href="./user_dir.php"><img src="../vector/default-monochrome.svg" class="user-photo" style="margin-left: 0px" alt="Lentose"></a>
+            <a href="./user_dir.php"><img src="../vector/default-monochrome.svg" class="user-photo" style="margin-left: 10px" alt="Lentose"></a>
         </div>
         <div class="navbar-right">
             <form id="navbar-search" class="navbar-form search-form">

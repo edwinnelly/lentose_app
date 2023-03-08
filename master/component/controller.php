@@ -31,7 +31,8 @@ class controller extends dbc
     }
 
     /**  function that allow int and float  */
-    public function allowIntsAndFloatsOnly($str) {
+    public function allowIntsAndFloatsOnly($str)
+    {
         return preg_replace("/[^0-9\.]/", "", $str);
     }
 
@@ -323,7 +324,7 @@ class controller extends dbc
         }
     }
 
-    public function update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id,$chqe)
+    public function update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id, $chqe)
     {
         $query = "update sales set sales_id='$trans_id',payment_method='$payment', customer='$customer',cheque_id='$chqe' where sales_id='new' and store_key='$key_grant'";
         $run_qry = $this->run_query($query);
@@ -345,9 +346,9 @@ class controller extends dbc
         }
     }
 
-    public function update_qty($product_id,$qty, $key_grant)
+    public function update_qty($product_id, $qty, $key_grant)
     {
-         $query = "update product_tables set on_hand_qty='$qty' where pid='$product_id' and key_grant='$key_grant'";
+        $query = "update product_tables set on_hand_qty='$qty' where pid='$product_id' and key_grant='$key_grant'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -372,6 +373,19 @@ class controller extends dbc
     {
         $dated = date('d-m-Y');
         $query = "INSERT INTO `custom_category` (`id`, `user_key`, `category_postomg`, `custom_code`, `status`, `date_added`) VALUES (NULL, '$key_grant', '$catnamex', '$rand', '1', '$dated')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+    public function new_debt_carts($customer, $amounts, $key_grant, $trans_id)
+    {
+        $dated = date('d-m-Y h:i:s');
+        $query = "INSERT INTO `debt_profile` (`id`, `customer_id`, `store_key`, `shop_id`, `opened_by`, `amount_total`, `amount_paid`, `status`, `date_opened`, `date_cleared`, `trans_id`) VALUES (NULL, '$customer', '$key_grant', '0', '', '$amounts', '0', '0', '$dated', '','$trans_id');
+";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -490,7 +504,7 @@ class controller extends dbc
         }
     }
 
-    public function add_new_chqe($key_grant,$customer_id,$pay_status,$cn,$camount,$duedate,$chqe_date,$chq_bank)
+    public function add_new_chqe($key_grant, $customer_id, $pay_status, $cn, $camount, $duedate, $chqe_date, $chq_bank)
     {
         $dated = date('d-m-Y');
         $query = "INSERT INTO `e_cheque` (`id`, `customer_id`, `cheque_no`, `amount`, `due_date`, `created_date`, `status`, `host_key`, `branch_id`, `bank_id`) VALUES (NULL, '$customer_id', '$cn', '$camount', '$duedate', '$chqe_date', '$pay_status', '$key_grant', '0','$chq_bank')";
@@ -630,6 +644,7 @@ class controller extends dbc
         $query = "delete from sales where id='$ads_id' and store_key='$key_grant' limit 1";
         return $this->runner($query);
     }
+
     public function empty_carting($key_grant)
     {
         $query = "delete from sales where store_key='$key_grant'";
@@ -984,8 +999,8 @@ class controller extends dbc
             $obj->customer = $row['customer'];
             $obj->item_name = $row['item_name'];
 
-            $get_prod_list = $this->edit_item_all($row['store_key'],$row['product_id']);
-            $obj->live_qty = $get_prod_list->on_hand_qty-$row['qty'];
+            $get_prod_list = $this->edit_item_all($row['store_key'], $row['product_id']);
+            $obj->live_qty = $get_prod_list->on_hand_qty - $row['qty'];
             $obj->live_pid = $get_prod_list->pid;
 
             $user_list[] = $obj;
@@ -993,7 +1008,7 @@ class controller extends dbc
         return $user_list;
     }
 
-    public function view_invoice($key_grant,$get_ids)
+    public function view_invoice($key_grant, $get_ids)
     {
         $query = "select * from sales where store_key='$key_grant' and seller_type='admin' and sales_id!='new' and sales_id='$get_ids'";
         $qx = $this->run_query($query);
@@ -1019,8 +1034,8 @@ class controller extends dbc
             $obj->customer = $row['customer'];
             $obj->item_name = $row['item_name'];
 
-            $get_prod_list = $this->edit_item_all($row['store_key'],$row['product_id']);
-            $obj->live_qty = $get_prod_list->on_hand_qty-$row['qty'];
+            $get_prod_list = $this->edit_item_all($row['store_key'], $row['product_id']);
+            $obj->live_qty = $get_prod_list->on_hand_qty - $row['qty'];
             $obj->live_pid = $get_prod_list->pid;
 
             $user_list[] = $obj;
@@ -1055,21 +1070,20 @@ class controller extends dbc
             $obj->customer = $row['customer'];
             $obj->item_name = $row['item_name'];
 
-            $get_prod_list = $this->edit_item_all($row['store_key'],$row['product_id']);
-            $obj->live_qty = $get_prod_list->on_hand_qty-$row['qty'];
+            $get_prod_list = $this->edit_item_all($row['store_key'], $row['product_id']);
+            $obj->live_qty = $get_prod_list->on_hand_qty - $row['qty'];
             $obj->live_pid = $get_prod_list->pid;
 
-            $cus_info = $this->get_customer_data($row['customer'],$row['store_key']);
+            $cus_info = $this->get_customer_data($row['customer'], $row['store_key']);
             $obj->vendor_name = $cus_info->vendor_name;
             $obj->phone = $cus_info->phone;
-
 
             $user_list[] = $obj;
         }
         return $user_list;
     }
 
-    public function total_paid_carts($sale_id,$key_id)
+    public function total_paid_carts($sale_id, $key_id)
     {
         $query = "SELECT SUM(price_sold) AS price_sold FROM sales where sales_id='$sale_id' and store_key='$key_id'";
         $row = $this->get_result($this->run_query($query));
@@ -1079,10 +1093,9 @@ class controller extends dbc
     }
 
 
-
     public function print_sales($key_grants)
     {
-         $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id!='new' group by sales_id";
+        $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id!='new' group by sales_id";
         $qx = $this->run_query($query);
         $user_list = array();
         while ($row = $this->get_result($qx)) {
@@ -1133,32 +1146,40 @@ class controller extends dbc
 
     public function fetch_cheque($key_grant)
     {
-        $query = "select * from bank_list where host_key='$key_grant' and branch_id= '0'";
+        $query = "select * from e_cheque where host_key='$key_grant' and branch_id= '0'";
         $qx = $this->run_query($query);
         $user_list = array();
         while ($row = $this->get_result($qx)) {
             $obj = new stdClass();
             $obj->id = $row['id'];
-            $obj->bank_name = $row['bank_name'];
-            $obj->account_number = $row['account_number'];
-            $obj->account_name = $row['account_name'];
-            $obj->account_name = $row['account_name'];
+            $obj->customer_id = $row['customer_id'];
+            $obj->cheque_no = $row['cheque_no'];
+            $obj->amount = $row['amount'];
+            $obj->due_date = $row['due_date'];
             $obj->created_date = $row['created_date'];
-            $obj->balance = $row['balance'];
+            $obj->status = $row['status'];
+            $obj->host_key = $row['host_key'];
             $obj->branch_id = $row['branch_id'];
+            $obj->bank_id = $row['bank_id'];
+            $obj->transaction_id = $row['transaction_id'];
+            $obj->void_chq = $row['void_chq'];
+
+            //get the customer info
+            $cus_info = $this->get_customer_data($row['customer_id'], $row['host_key']);
+            $obj->vendor_name = $cus_info->vendor_name;
+            $obj->phone = $cus_info->phone;
+
             $user_list[] = $obj;
         }
         return $user_list;
     }
 
-    public function check_cheque($key_grant,$cn)
+    public function check_cheque($key_grant, $cn)
     {
         $query = "select * from e_cheque where cheque_no='$cn' and host_key='$key_grant'";
         $run_query = $this->run_query($query);
         return $this->get_number_of_row($run_query);
     }
-
-
 
 
     public function del_banks_statement($code)
@@ -4335,7 +4356,7 @@ class controller extends dbc
 
     public function cash_cr($s, $e)
     {
-         $query = "SELECT SUM(cr) AS cash_c FROM cash_report where date_cr<'$s'";
+        $query = "SELECT SUM(cr) AS cash_c FROM cash_report where date_cr<'$s'";
         $row = $this->get_result($this->run_query($query));
         $obj = new stdClass();
         $obj->cash_c = $row['cash_c'];

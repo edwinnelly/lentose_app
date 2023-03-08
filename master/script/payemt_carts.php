@@ -7,7 +7,10 @@ $add_roles = new controller;
 $payment = $add_roles->post_request('payment');
 $customer = $add_roles->post_request('customer');
 $chqe = $add_roles->post_request('chqe');
-$trans_id = rand(1234, 12345);
+$debt = $add_roles->post_request('debt');
+$amountsc = $add_roles->post_request('amounts');
+$amounts = $add_roles->allowIntsAndFloatsOnly($amountsc);
+$trans_id = rand(12345,123456);
 
 try {
   if($email_cus=='yes'){
@@ -20,6 +23,12 @@ try {
         //the qty state
         $qty_state = $app->update_qty($product_id,$qty, $key_grant);
     }
+    //add to debt profile
+      if($debt=='yes' && $customer!=0){
+        $create_debt = $add_roles->new_debt_carts($customer,$amounts,$key_grant,$trans_id);
+      }else{
+          //do nothing
+      }
     //update the carting
     $newrolesx = $add_roles->update_cartings($email_cus, $payment, $customer, $key_grant, $trans_id,$chqe);
     if ($newrolesx == "success") {
@@ -43,8 +52,6 @@ try {
         echo "Invalid command";
     }
   }
-
-
 } catch (\Exception $e) {
   // Code to handle the exception
       echo "Caught exception: " . $e->getMessage();

@@ -9,11 +9,15 @@ $app = new controller;
     <?php
     require_once 'component/meta_config.php';
     ?>
+    <!-- CSS file from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.min.css" />
+
+
 </head>
 <body class="theme-cyan">
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="../logo/lentose.png" height="150" alt="Lentose" style="height: 50px"></div>
+        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>
         <p>Please wait...</p>
     </div>
 </div>
@@ -99,8 +103,8 @@ $app = new controller;
                             <div class="header">
                                 <h2></small>
                                     <button class="btn btn-primary pull-right font-weight-bold" id="checkouts">Check out</button>
-                                    <img style="cursor: pointer" class="p-l-5" src="https://cdn2.iconfinder.com/data/icons/e-commerce-643/24/empty_cart_retail_buy_market_cancel_order_supermarket-512.png" height="30" id="clearcarts">
-                                    <img style="cursor: pointer" onclick="window.location.href='carts'" class="p-l-5" src="https://cdn1.iconfinder.com/data/icons/material-core/16/refresh-48.png" height="20">
+                                    <img style="cursor: pointer" class="p-l-5" src="icon/delete-cart.png" height="30" id="clearcarts">
+                                    <img style="cursor: pointer" onclick="window.location.href='carts'" class="p-l-5" src="icon/refresh.png" height="20">
 
                                     <label class="p-l-20 text-default">₦<?php
                                         $sum_cart = $app->sum_carts($key_grant); echo number_format($sum_cart->price_sold);
@@ -237,7 +241,6 @@ $app = new controller;
                                 cache: false,
                                 processData: false,
                                 success: (data) => {
-                                    console.log(data)
                                 if(data.trim() == "done") {
                                 toastr.success('Payment Completed.', 'Success');
                                 setTimeout(
@@ -312,15 +315,28 @@ $app = new controller;
 
                                       $('#chq').html(data);
                                   },
-
                               });
                           }
-
                         }));
 
                     })
                 </script>
-</body>
+                <script>
+                    $(document).ready(function () {
+                        $('#my-select').selectize({
+                            sortField: 'text'
+                        });
+                    });
+                </script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
 </html>
 
 <div class="modal fade" id="del_staff" tabindex="-1" role="dialog">
@@ -386,7 +402,7 @@ $app = new controller;
                             <div class="form-group">
                                 <label>Select Customer</label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="customer">
+                                        data-placeholder="Select" id="my-select" name="customer">
                                     <option value="0">Default</option>
                                     <?php
                                     $get_category = $app->getcustomer_lentose($key_grant);
@@ -422,23 +438,51 @@ $app = new controller;
 
                             <div class="col-10">
                                 <div class="form-group">
-                                    <div id="chq"> </div>
+<!--                                    <div id="chq"> </div>-->
+                                    <label>Choose Cheque</label>
+                                    <select class="form-control" id="my-select" name="chqe" required  placeholder="Pick a cheque number..." style="width: 100%">
+                                        <option>Choose Cheque Number</option>
+                                        <?php
+                                        $get_category = $app->fetch_cheque($key_grant);
+                                        $count = 0;
+                                        foreach ($get_category as $cc) {
+                                            $count++;
+                                            ?> <option value="<?=  $cc->cheque_no; ?>"><?=  $cc->cheque_no; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+
                                 </div>
                                 </div>
 
                         <div class="col-10">
                             <div class="form-group">
+                                <label>Add To Debt Profile / <span class="text-danger font-12">Always choose a customer to complete this action</span>
+                                </label>
+                                 <select class="form-control show-tick ms select2"
+                                        data-placeholder="Select" name="em">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-10">
+                            <div class="form-group">
                                 <label>Dispatch Item</label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="em">
+                                        data-placeholder="Select" name="debt">
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <input type="hidden" id="pid" name="pid">
+                        <div class="col-10">
+                            <input type="hidden" id="amounts" name="amounts" value="<?php
+                            $sum_cart = $app->sum_carts($key_grant); echo number_format($sum_cart->price_sold);
+                            ?>">
                             <input type="hidden" id="sb">
                         </div>
                     </div>

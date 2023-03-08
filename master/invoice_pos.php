@@ -121,7 +121,6 @@ $get_ids = base64_decode($app->get_request('sid'));
                     <td class="Rate"><h5>Sub Total</h5></td>
                 </tr>
                 <?php
-
                 $get_category = $app->view_invoice($key_grant,$get_ids);
                 $count = 0;
                 foreach ($get_category as $cc) {

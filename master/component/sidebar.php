@@ -1,10 +1,8 @@
 <div id="left-sidebar" class="sidebar">
     <div class="sidebar-scroll">
         <div class="user-account">
-<!--            <img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_vine-256.png" class="rounded- user-photo" style="width: 50px;margin-left: 29px" alt="User Profile Picture">-->
+<!--            <img src="./icon/user.png" class="rounded- user-photo" style="width: 34px;margin-left: 29px" alt="User Profile Picture">-->
 
-            <br>
-            <br>
             <ul class="row list-unstyled">
                 <li class="col-4">
                     <small class="font-weight-bold">Staff</small>
