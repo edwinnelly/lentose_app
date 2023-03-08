@@ -30,6 +30,11 @@ class controller extends dbc
         }
     }
 
+    /**  function that allow int and float  */
+    public function allowIntsAndFloatsOnly($str) {
+        return preg_replace("/[^0-9\.]/", "", $str);
+    }
+
     //user login
     public function auth_users($email, $password)
     {
@@ -477,6 +482,18 @@ class controller extends dbc
     {
         $dated = date('d-m-Y');
         $query = "INSERT INTO `product_tables` (`pid`, `key_grant`, `item_type`, `category_inventory`, `items_name`, `vendor_id`, `description_inventory`, `attribute`, `item_size`, `on_hand_qty`, `aval_qty`, `reorder_point`, `unit_measurement`, `barcode`, `upc`, `alt_look_up`, `regular_price`, `order_price`, `average_unit_cost`, `tax`, `photo1`, `photo2`, `photo3`, `photo4`, `cat1`, `cat2`, `cat3`, `cat4`) VALUES (NULL, '$key_grant', '$item_type', '$cat_type', '$item_name', '$vendor', '$description', '$attribute', '$item_size', '$qty', '$aval_qty', '$reorder', '$unit', '$barcode', '$upc', '$extra_info', '$regular_price', '$order_price', '$avg_unit_cost', '$tax', '$img_path1', '$img_path2', '$img_path3', '$img_path4', '$cat1', '$cat2', '$cat3', '$cat4')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+    public function add_new_chqe($key_grant,$customer_id,$pay_status,$cn,$camount,$duedate,$chqe_date,$chq_bank)
+    {
+        $dated = date('d-m-Y');
+        $query = "INSERT INTO `e_cheque` (`id`, `customer_id`, `cheque_no`, `amount`, `due_date`, `created_date`, `status`, `host_key`, `branch_id`, `bank_id`) VALUES (NULL, '$customer_id', '$cn', '$camount', '$duedate', '$chqe_date', '$pay_status', '$key_grant', '0','$chq_bank')";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -1093,6 +1110,53 @@ class controller extends dbc
         return $user_list;
     }
 
+    //vt rp
+    public function fetch_all_bank($key_grant)
+    {
+        $query = "select * from bank_list where host_key='$key_grant' and branch_id= '0'";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->bank_name = $row['bank_name'];
+            $obj->account_number = $row['account_number'];
+            $obj->account_name = $row['account_name'];
+            $obj->account_name = $row['account_name'];
+            $obj->created_date = $row['created_date'];
+            $obj->balance = $row['balance'];
+            $obj->branch_id = $row['branch_id'];
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
+
+    public function fetch_cheque($key_grant)
+    {
+        $query = "select * from bank_list where host_key='$key_grant' and branch_id= '0'";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->bank_name = $row['bank_name'];
+            $obj->account_number = $row['account_number'];
+            $obj->account_name = $row['account_name'];
+            $obj->account_name = $row['account_name'];
+            $obj->created_date = $row['created_date'];
+            $obj->balance = $row['balance'];
+            $obj->branch_id = $row['branch_id'];
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
+
+    public function check_cheque($key_grant,$cn)
+    {
+        $query = "select * from e_cheque where cheque_no='$cn' and host_key='$key_grant'";
+        $run_query = $this->run_query($query);
+        return $this->get_number_of_row($run_query);
+    }
 
 
 

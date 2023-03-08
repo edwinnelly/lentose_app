@@ -30,7 +30,7 @@ $app = new controller;
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
                                         class="fa fa-arrow-left"></i></a> Add Items</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">Add</li>
                             <li class="breadcrumb-item active">Edit</li>
                         </ul>

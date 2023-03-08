@@ -135,6 +135,7 @@
                             <ul>
                                 <li><a href="">Connect to QuickBooks</a> </li>
                                 <li><a href="">Debtors List</a> </li>
+                                <li><a href="chque_man">Cheque Manager</a> </li>
                             </ul>
                         </li>
                         <li>

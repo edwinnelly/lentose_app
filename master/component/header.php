@@ -4,7 +4,7 @@
             <button type="button" class="btn-toggle-offcanvas"><img src="https://cdn-icons-png.flaticon.com/512/2311/2311524.png" height="30"></i></button>
         </div>
         <div class="navbar-brand">
-            <a href="./user_dir.php"><img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_vine-256.png" class="rounded- user-photo" style="width: 45px;margin-left: 0px" alt="Lentose"></a>
+            <a href="./user_dir.php"><img src="../vector/default-monochrome.svg" class="user-photo" style="margin-left: 0px" alt="Lentose"></a>
         </div>
         <div class="navbar-right">
             <form id="navbar-search" class="navbar-form search-form">
