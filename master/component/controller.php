@@ -978,6 +978,37 @@ class controller extends dbc
         return $obj;
     }
 
+    public function edit_cheque($public_key, $sid)
+    {
+        $query = "select * from e_cheque where host_key='$public_key' and id='$sid'";
+        $row = $this->get_result($this->run_query($query));
+        $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->customer_id = $row['customer_id'];
+        $obj->cheque_no = $row['cheque_no'];
+        $obj->amount = $row['amount'];
+        $obj->due_date = $row['due_date'];
+        $obj->created_date = $row['created_date'];
+        $obj->status = $row['status'];
+        $obj->host_key = $row['host_key'];
+        $obj->branch_id = $row['branch_id'];
+        $obj->bank_id = $row['bank_id'];
+        $obj->transaction_id = $row['transaction_id'];
+        $obj->void_chq = $row['void_chq'];
+
+        //get the customer info
+        $cus_info = $this->get_customer_data($row['customer_id'], $row['host_key']);
+        $obj->vendor_name = $cus_info->vendor_name;
+        $obj->phone = $cus_info->phone;
+
+        //get the customer info
+        $cus_info = $this->get_bank_info($row['bank_id'], $row['host_key']);
+        $obj->bank_name = $cus_info->bank_name;
+
+
+        return $obj;
+    }
+
 
     /** function to reduce the lenght of a string **/
     public function stringFormat($string, $len)
@@ -1160,6 +1191,11 @@ class controller extends dbc
         }
         return $user_list;
     }
+
+
+
+
+
 
     public function fetch_cheque($key_grant)
     {

@@ -1,6 +1,8 @@
 <?php
 include_once "component/user_data.php";
 $app = new controller;
+$get_id = base64_decode($app->get_request('fib'));
+$ccc = $app->edit_cheque($key_grant, $get_id);
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -34,12 +36,7 @@ $app = new controller;
                             <li class="breadcrumb-item active">Customer</li>
                         </ul>
                     </div>
-                    <div class="col-lg-7 col-md-4 col-sm-12 text-right">
-                        <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
-                        </div>
-                        <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="row clearfix">
@@ -62,7 +59,7 @@ $app = new controller;
                                                 <label>Select Customer</label>
                                                 <select class="form-control show-tick ms select2"
                                                         data-placeholder="Select" name="customer">
-                                                    <option value="0">Default</option>
+                                                    <option value="<?= $ccc->id; ?>"><?= $ccc->vendor_name; ?></option>
                                                     <?php
                                                     $get_category = $app->getcustomer_lentose($key_grant);
                                                     foreach ($get_category as $cc) {
@@ -82,6 +79,7 @@ $app = new controller;
                                             <label>Select Cheque Status</label>
                                             <select class="form-control show-tick ms select2"
                                                     data-placeholder="Select" name="payment" id="pay_status">
+                                                <option><?= $ccc->status; ?></option>
                                                 <option>Paid</option>
                                                 <option>Unpaid</option>
                                             </select>
