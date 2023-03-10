@@ -2252,7 +2252,7 @@ footer {
 #wrapper:before,
 #wrapper:after {
     height: 100vh;
-    width: 5px;
+    width: -2px;
     position: fixed;
     content: '';
     z-index: 999;

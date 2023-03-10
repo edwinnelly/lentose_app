@@ -36,16 +36,13 @@
                             <a href="#" class="has-arrow"><img src="./icon/7787524_cart_shopping_shop_ecommerce_buy_icon.png" height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
                             <ul>
                                 <li><a href="carts">New Sales Order</a></li>
-                                <li><a href="sales_receipt">New Sales Receipt</a></li>
 
-                                <!-- <li><a href="">New Return Receipt</a></li> -->
                                 <li><a href="sales_history.php">Sales History</a></li>
 
                                 <li><a href="new_return_receipt">New Return Receipt</a></li>
-                                <!-- <li><a href="">Sales History</a></li> -->
+
                                 <li><a href="">Held Receipts</a></li>
-                                <!-- <li><a href="">Sales History</a></li> -->
-                                <!-- <li><a href="">Held Receipts</a></li> -->
+
                                 <li><a href="">End of Day Procedure</a></li>
                             </ul>
                         </li>

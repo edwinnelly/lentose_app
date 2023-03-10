@@ -368,6 +368,17 @@ class controller extends dbc
         }
     }
 
+    public function update_cheque_ref($chqe,$key_grant,$trans_id)
+    {
+        $query = "update e_cheque set transaction_id='$trans_id' where cheque_no='$chqe' and host_key='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
 
     public function add_category($catnamex, $rand, $key_grant)
     {
@@ -661,6 +672,12 @@ class controller extends dbc
     public function delete_items($pid, $key_grant)
     {
         $query = "delete from product_tables where pid='$pid' and key_grant='$key_grant' limit 1";
+        return $this->runner($query);
+    }
+
+    public function delete_cheque($pid, $key_grant)
+    {
+        $query = "delete from e_cheque where id='$pid' and host_key='$key_grant' limit 1";
         return $this->runner($query);
     }
 
@@ -1169,6 +1186,10 @@ class controller extends dbc
             $obj->vendor_name = $cus_info->vendor_name;
             $obj->phone = $cus_info->phone;
 
+            //get the customer info
+            $cus_info = $this->get_bank_info($row['bank_id'], $row['host_key']);
+            $obj->bank_name = $cus_info->bank_name;
+
             $user_list[] = $obj;
         }
         return $user_list;
@@ -1209,6 +1230,26 @@ class controller extends dbc
         $obj->user_id = $row['id'];
         $obj->email = $row['email'];
         $obj->fullname = $row['fullname'];
+        return $obj;
+    }
+
+
+
+
+    //All user info sorted by id
+    public function get_bank_info($bank_id,$key_grant)
+    {
+        $query = "select * from bank_list where host_key='$key_grant' and id='$bank_id'";
+        $row = $this->get_result($this->run_query($query));
+        $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->bank_name = $row['bank_name'];
+        $obj->account_number = $row['account_number'];
+        $obj->account_name = $row['account_name'];
+        $obj->account_name = $row['account_name'];
+        $obj->created_date = $row['created_date'];
+        $obj->balance = $row['balance'];
+        $obj->branch_id = $row['branch_id'];
         return $obj;
     }
 

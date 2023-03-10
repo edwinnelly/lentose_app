@@ -60,6 +60,7 @@ $app = new controller;
                                 <tr>
                                     <th> S/N</th>
                                     <th>Customer Name</th>
+                                    <th>Bank Name</th>
                                     <th>Cheque Number</th>
                                     <th>Amount</th>
                                     <th>Status</th>
@@ -79,6 +80,7 @@ $app = new controller;
                                     <tr>
                                         <th scope="row"><?= $count; ?></th>
                                         <td><?= $cc->vendor_name;  ?></td>
+                                        <td><?= $cc->bank_name;  ?></td>
                                         <td><?= $cc->cheque_no;  ?></td>
                                         <td><?= $cc->amount;  ?></td>
                                         <td><?= $cc->status;  ?></td>
@@ -94,9 +96,9 @@ $app = new controller;
 
                                                     <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve</a>
                                                     <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve & Dispatch</a>
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Edit Cheque</a>
+                                                    <a class="dropdown-item" href="customize_cheque?fib=<?= base64_encode($cc->id); ?>">Edit Cheque</a>
                                                     <hr>
-                                                    <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>" data-id="<?= $cc->id; ?>">Delete</a>
+                                                    <a class="dropdown-item remove_items" style="cursor: pointer;" data-item="<?= $cc->vendor_name; ?> / Cheque: <?= $cc->cheque_no;  ?> / Bank name: <?= $cc->bank_name;  ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -139,7 +141,6 @@ $app = new controller;
                                 cache: false,
                                 processData:false,
                                 success: (data)=> {
-                                    console.log(data)
                                     if(data.trim() == "done"){
                                         toastr.success('Completed.', 'Success');
                                         setTimeout(
@@ -158,6 +159,59 @@ $app = new controller;
 
                             });
                         }));
+
+                        $(document).on('click', '.remove_items', function() {
+                            const pid = $(this).attr("data-id");
+                            const item = $(this).attr("data-item");
+                            const secure = $(this).attr("data-secure");
+                            // show in text field
+                            $("#uid").val(pid);
+                            $("#catname").val(item);
+                            $("#secure").val(secure);
+                            //display modal
+                            $('#del_cat').modal('show');
+                            $("#del_stf").click(function () {
+                                const uid = $("#uid").val();
+                                const sb = $("#sb").val();
+                                const secure = $("#secure").val();
+                                const btn = $("#del_stf");
+                                btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Deleting...');
+                                //validate
+                                //call Ajax
+                                if (uid === '' || uid === 0) {
+                                    toastr.warning('Please check selection.', 'warning');
+                                    const btn = $("#del_stf");
+                                    btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Try Again...');
+                                } else {
+                                    $.ajax({
+                                        url: "script/removeCheque",
+                                        method: "POST",
+                                        data: {
+                                            uid: uid,secure:secure
+                                        },
+                                        success: function (data) {
+                                            if(data.trim() == "done"){
+                                                toastr.success('Completed.', 'Success');
+                                                setTimeout(
+                                                    function () {
+                                                        window.location.href='chque_man';
+                                                    }, 2000);
+                                            }else{
+                                                toastr.error(data, 'Bad Request');
+                                                setTimeout(
+                                                    function () {
+                                                        const btn = $("#save_btn");
+                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create Cheque');
+                                                    }, 2000);
+                                            }
+
+                                        }
+                                    });
+                                }
+                            });
+                        });
+
+
                     });
 
                 </script>
@@ -168,22 +222,23 @@ $app = new controller;
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="title font-weight-bold" id="defaultModalLabel">Delete Customer</h6>
+                <h6 class="title font-weight-bold" id="defaultModalLabel">Delete Cheque</h6>
             </div>
             <span class="m-l-10 text-danger">Please note this action is permanent</span>
             <div class="modal-body">
                 <form id="postcatdel" method="post">
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
-                            <input type="text" placeholder="Add to Categories"
+                            <input type="text" placeholder="Delete Cheque"
                                    class="float-right form-control" name="catname" id="catname" readonly="" required>
-                            <input type="hidden" name="cpid" id="cpids">
+                            <input type="hidden" name="uid" id="uid">
+                            <input type="hidden" name="secure" id="secure">
                         </div>
                     </div>
             </div>
 
             <div class="modal-footer">
-                <input type="submit" class="btn btn-primary font-weight-bold" id="del_btn_cat" value="Delete Customer">
+                <input type="submit" class="btn btn-primary font-weight-bold" id="del_stf" value="Delete Cheque">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
             </div>
             </form>
@@ -281,10 +336,6 @@ $app = new controller;
                                 <input type="date" id="text" name="duedate" value="" required class="form-control">
                             </div>
                         </div>
-
-
-
-
 
                         <div class="col-12">
                             <input type="hidden" id="pid" name="pid">

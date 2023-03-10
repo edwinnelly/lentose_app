@@ -39,7 +39,7 @@ $category = $app->count_category_($key_grant);
         }
     </style>
 </head>
-<body class="theme-cyan">
+<body class="theme-blue">
 <!--<div class="page-loader-wrapper">-->
 <!--    <div class="loader">-->
 <!--        <div class="m-t-30"><img src="../logo/lentose1.png" height="150" alt="Lentose"></div>-->

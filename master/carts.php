@@ -1,6 +1,7 @@
 <?php
 include_once "component/user_data.php";
 $app = new controller;
+$sum_cart = $app->sum_carts($key_grant);
 ?>
 <!doctype html>
 <html lang="en">
@@ -79,7 +80,7 @@ $app = new controller;
                                         <tr>
                                             <th><?= $count; ?></th>
                                             <td>
-                                                <b><?= $cc->items_name; ?></b><br><?= $app->stringFormat($cc->description_inventory, 50); ?>
+                                                <b><?= $cc->items_name; ?></b><br><?= $app->stringFormat($cc->description_inventory, 40); ?>
                                                 <label class=""><?= $cc->category_postomg; ?></label></td>
                                             <td><?= number_format($cc->regular_price); ?></td>
                                             <td><?= $cc->on_hand_qty; ?></td>
@@ -101,13 +102,19 @@ $app = new controller;
                     <div class="col-lg-5">
                         <div class="card">
                             <div class="header">
-                                <h2></small>
-                                    <button class="btn btn-primary pull-right font-weight-bold" id="checkouts">Check out</button>
+                                <h2></small><?php
+                                    if($sum_cart->price_sold==0){
+
+                                    }else{
+                                        echo '<button class="btn btn-primary pull-right font-weight-bold" id="checkouts">Check out</button>
+                                    ';
+                                    }
+                                    ?>
                                     <img style="cursor: pointer" class="p-l-5" src="icon/delete-cart.png" height="30" id="clearcarts">
                                     <img style="cursor: pointer" onclick="window.location.href='carts'" class="p-l-5" src="icon/refresh.png" height="20">
 
                                     <label class="p-l-20 text-default">₦<?php
-                                        $sum_cart = $app->sum_carts($key_grant); echo number_format($sum_cart->price_sold);
+                                        echo number_format($sum_cart->price_sold);
                                         ?></label>
 
                                 </h2>
@@ -431,7 +438,6 @@ $app = new controller;
                                     <option>Cash_POS_Transfer</option>
                                     <option>Cheque</option>
                                     <option>Others</option>
-
                                 </select>
                             </div>
                         </div>
@@ -461,7 +467,7 @@ $app = new controller;
                                 <label>Add To Debt Profile / <span class="text-danger font-12">Always choose a customer to complete this action</span>
                                 </label>
                                  <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="em">
+                                        data-placeholder="Select" name="debt">
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
@@ -472,7 +478,7 @@ $app = new controller;
                             <div class="form-group">
                                 <label>Dispatch Item</label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="debt">
+                                        data-placeholder="Select" name="em">
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
                                 </select>

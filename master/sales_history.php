@@ -15,7 +15,7 @@ $app = new controller;
 <body class="theme-cyan">
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="../logo/lentose.png" width="48" height="48" alt="Lucid"></div>
+            <div class="m-t-30"><img src="../vector/default-monochrome.svg" width="60" height="48" alt="Lucid"></div>
             <p>Please wait...</p>
         </div>
     </div>
