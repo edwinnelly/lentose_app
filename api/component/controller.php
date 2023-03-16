@@ -597,9 +597,9 @@ class controller extends dbc
     }
 
 
-    public function update_pwd($public_key, $email,$new_pwd)
+    public function update_pwd($public_key, $email,$password)
     {
-         $query = "update e_shop_members set password_e='$new_pwd' where email_e='$email' and host_key='$public_key'";
+         $query = "update e_shop_members set password_e='$password' where email_e='$email' and host_key='$public_key'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return json_encode("success");
