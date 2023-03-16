@@ -11,12 +11,7 @@ $app = new controller;
     ?>
 </head>
 <body class="theme-cyan">
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>
-        <p>Please wait...</p>
-    </div>
-</div>
+
 <div id="wrapper">
     <?php
     require_once 'component/header.php';

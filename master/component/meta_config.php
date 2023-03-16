@@ -31,6 +31,19 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/color_skins.css">
 
+<meta http-equiv="Content-Security-Policy"
+      content="
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';
+                 frame-ancestors 'none';
+                 manifest-src 'self';
+                 worker-src 'self';
+                 block-all-mixed-content;
+                 upgrade-insecure-requests;
+                 reflected-xss block;
+                ">
+
 <style>
     @media screen and (max-width: 320px) {
         #cc {

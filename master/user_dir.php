@@ -16,16 +16,24 @@ $category = $app->count_category_($key_grant);
 <head>
     <title>:: Lentose :: Dashboard</title>
     <meta name="description" content="Place the meta description text here.">
-    <meta name=”robots” content="index, follow">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/color_skins.css">
-
+    <meta http-equiv="Content-Security-Policy"
+          content="
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';
+                 frame-ancestors 'none';
+                 manifest-src 'self';
+                 worker-src 'self';
+                 block-all-mixed-content;
+                 upgrade-insecure-requests;
+                 reflected-xss block;
+                ">
     <style>
         @media screen and (max-width: 320px) {
             #cc {
@@ -217,20 +225,20 @@ $category = $app->count_category_($key_grant);
 <script src="assets/bundles/mainscripts.bundle.js"></script>
 <script src="assets/js/index8.js"></script>
 <script>
-    const url = 'https://lentose.com/master/user_dir';
-    const cacheOptions = {
-        headers: {
-            'Cache-Control': 'max-age=3600'
-        }
-    };
-
-    fetch(new Request(url, cacheOptions))
-        .then(response => {
-            // Handle the response
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    // const url = 'https://lentose.com/master/user_dir';
+    // const cacheOptions = {
+    //     headers: {
+    //         'Cache-Control': 'max-age=3600'
+    //     }
+    // };
+    //
+    // fetch(new Request(url, cacheOptions))
+    //     .then(response => {
+    //         // Handle the response
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //     });
 </script>
 </body>
 </html>

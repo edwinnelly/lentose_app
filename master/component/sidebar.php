@@ -30,10 +30,10 @@
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
                         <li class="active">
-                            <a href="user_dir.php" ><img src="./icon/4213424_building_estate_home_house_property_icon%20(1).png" height="21"></i> <span class="side_bar_adjust">Dashboard</span></a>
+                            <a href="user_dir.php" ><img src="./icon/4213424_building_estate_home_house_property_icon%20(1).png" height="21" alt="icons"></i> <span class="side_bar_adjust">Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/7787524_cart_shopping_shop_ecommerce_buy_icon.png" height="21"> <span class="side_bar_adjust">Print of Sale</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7787524_cart_shopping_shop_ecommerce_buy_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Print of Sale</span></a>
                             <ul>
                                 <li><a href="carts">New Sales Order</a></li>
 
@@ -47,7 +47,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/8666755_users_group_icon.png" height="21"> <span class="side_bar_adjust">Customers</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666755_users_group_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Customers</span></a>
                             <ul>
                                 <li><a href="customer-list.php">Customers List</a></li>
                                 <li><a href="reward-managers.php">Reward Manager</a></li>
@@ -56,7 +56,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/8666587_cloud_snow_icon.png" height="21"> <span class="side_bar_adjust">Inventory</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666587_cloud_snow_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Inventory</span></a>
                             <ul>
                                 <li><a href="item_categories.php">Categories</a></li>
                                 <li><a href="add_items.php"> New Item</a></li>
@@ -74,7 +74,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/622396_bag_shopping_basket_buy_ecommerce_icon.png" height="21"> <span class="side_bar_adjust">Purchasing</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/622396_bag_shopping_basket_buy_ecommerce_icon.png" alt="icons" height="21"> <span class="side_bar_adjust">Purchasing</span></a>
                             <ul>
                                 <li><a href="">New Receiving Voucher</a></li>
                                 <li><a href="">New Return Voucher</a></li>
@@ -90,7 +90,7 @@
 
 
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/4213403_bill_check_ecommerce_invoice_payment_icon.png" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/4213403_bill_check_ecommerce_invoice_payment_icon.png" alt="icons" height="21"> <span class="side_bar_adjust">Ecommerce</span></a>
                             <ul>
 
                                 <li><a href="ecom-customers.php">Customers</a></li>
@@ -114,7 +114,7 @@
 
 
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/3671895_group_user_icon.png" height="21"> <span class="side_bar_adjust">Employees</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3671895_group_user_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Employees</span></a>
                             <ul>
                                 <li><a href="employee-list.php">Employee List</a></li>
                                 <li><a href="">Security</a></li>
@@ -126,7 +126,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/8679238_money_euro_circle_icon.png" height="21"> <span class="side_bar_adjust">Financial</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8679238_money_euro_circle_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Financial</span></a>
                             <ul>
                                 <li><a href="">Connect to QuickBooks</a> </li>
                                 <li><a href="">Debtors List</a> </li>
@@ -135,7 +135,7 @@
                         </li>
                         <li>
 
-                            <a href="#" class="has-arrow"><img src="./icon/3671868_front_store_icon.png" height="21"> <span class="side_bar_adjust">Stores</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3671868_front_store_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Stores</span></a>
                             <ul>
                                 <li><a href="">Store Exchange Center</a></li>
                                 <li><a href="">Configure Store Exchange</a></li>
@@ -143,7 +143,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/7218397_presentation_business_infographic_report_corporate_icon.png" height="21"> <span class="side_bar_adjust">Reports</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7218397_presentation_business_infographic_report_corporate_icon.png" alt="icons" height="21"> <span class="side_bar_adjust">Reports</span></a>
 
                             <ul>
                                 <li><a href="">Report Center</a> </li>
@@ -162,7 +162,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/7215822_presentation_business_infographic_report_corporate_icon.png" height="21"> <span class="side_bar_adjust">Windows</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/7215822_presentation_business_infographic_report_corporate_icon.png" alt="icons" height="21"> <span class="side_bar_adjust">Windows</span></a>
 
                             <ul>
                                 <li><a href="">New Sales Receipt</a> </li>
@@ -175,7 +175,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/17787557_configuration_settings_gear_options_preferences_icon.png" height="21"> <span class="side_bar_adjust">Tools</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/17787557_configuration_settings_gear_options_preferences_icon.png" alt="icons" height="21"> <span class="side_bar_adjust">Tools</span></a>
                             <ul>
                                 <li><a href="">Print Designer</a></li>
                                 <li><a href="">User Information</a></li>
@@ -183,7 +183,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/3200448_centre_support_service_drawn_men_icon.png" height="21"> <span class="side_bar_adjust">Help</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/3200448_centre_support_service_drawn_men_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Help</span></a>
                             <ul>
                                 <li><a href="">Help Content</a></li>
                                 <li><a href="">Help on this Window</a></li>
@@ -204,7 +204,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-arrow"><img src="./icon/8666692_power_icon.png" height="21"> <span class="side_bar_adjust">Logout</span></a>
+                            <a href="#" class="has-arrow"><img src="./icon/8666692_power_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Logout</span></a>
 
                         </li>
                     </ul>
@@ -223,7 +223,7 @@
                     <li class="online">
                         <a href="javascript:void(0);">
                             <div class="media">
-                                <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
+                                <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="icon">
                                 <div class="media-body">
                                     <span class="name">Chris Fox</span>
                                     <span class="message">Designer, Blogger</span>
@@ -235,7 +235,7 @@
                     <li class="online">
                         <a href="javascript:void(0);">
                             <div class="media">
-                                <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
+                                <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="icon">
                                 <div class="media-body">
                                     <span class="name">Joge Lucky</span>
                                     <span class="message">Java Developer</span>
@@ -247,7 +247,7 @@
                     <li class="offline">
                         <a href="javascript:void(0);">
                             <div class="media">
-                                <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
+                                <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="icon">
                                 <div class="media-body">
                                     <span class="name">Isabella</span>
                                     <span class="message">CEO, Thememakker</span>
@@ -259,7 +259,7 @@
                     <li class="offline">
                         <a href="javascript:void(0);">
                             <div class="media">
-                                <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="">
+                                <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="icon">
                                 <div class="media-body">
                                     <span class="name">Folisise Chosielie</span>
                                     <span class="message">Art director, Movie Cut</span>
@@ -271,7 +271,7 @@
                     <li class="online">
                         <a href="javascript:void(0);">
                             <div class="media">
-                                <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
+                                <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="icn">
                                 <div class="media-body">
                                     <span class="name">Alexander</span>
                                     <span class="message">Writter, Mag Editor</span>
