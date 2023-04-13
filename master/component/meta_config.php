@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/color_skins.css">
-
+<!---->
 <meta http-equiv="Content-Security-Policy"
       content="
                  object-src 'none';

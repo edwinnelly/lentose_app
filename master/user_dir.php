@@ -225,20 +225,20 @@ $category = $app->count_category_($key_grant);
 <script src="assets/bundles/mainscripts.bundle.js"></script>
 <script src="assets/js/index8.js"></script>
 <script>
-    // const url = 'https://lentose.com/master/user_dir';
-    // const cacheOptions = {
-    //     headers: {
-    //         'Cache-Control': 'max-age=3600'
-    //     }
-    // };
-    //
-    // fetch(new Request(url, cacheOptions))
-    //     .then(response => {
-    //         // Handle the response
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
+    const url = 'https://lentose.com/master/user_dir';
+    const cacheOptions = {
+        headers: {
+            'Cache-Control': 'max-age=3600'
+        }
+    };
+
+    fetch(new Request(url, cacheOptions))
+        .then(response => {
+            // Handle the response
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 </body>
 </html>

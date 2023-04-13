@@ -13,12 +13,7 @@ $app = new controller;
 </head>
 
 <body class="theme-cyan">
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="m-t-30"><img src="../assets/images/logo-icon.svg" width="48" height="48" alt="Lucid"></div>
-            <p>Please wait...</p>
-        </div>
-    </div>
+
     <div id="wrapper">
         <?php
         require_once 'component/header.php';
@@ -101,6 +96,7 @@ $app = new controller;
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                             <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id + 9020); ?>">Edit</a>
+                                                            <a class="dropdown-item" href="customer_logs?fib=<?= base64_encode($cc->id + 9020); ?>">View Note</a>
 
                                                             <hr>
                                                             <a class="dropdown-item del_cat" style="cursor: pointer;" data-info="<?= $cc->vendor_name; ?>" data-id="<?= $cc->id; ?>">Delete</a>

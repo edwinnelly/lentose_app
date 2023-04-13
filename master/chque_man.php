@@ -61,6 +61,7 @@ $app = new controller;
                                     <th>Status</th>
                                     <th>Due Date</th>
                                     <th>Created Date</th>
+                                    <th>Trans ID</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -77,10 +78,11 @@ $app = new controller;
                                         <td><?= $cc->vendor_name;  ?></td>
                                         <td><?= $cc->bank_name;  ?></td>
                                         <td><?= $cc->cheque_no;  ?></td>
-                                        <td><?= $cc->amount;  ?></td>
+                                        <td><?= number_format($cc->amount);  ?></td>
                                         <td><?= $cc->status;  ?></td>
                                         <td><?= $cc->due_date;  ?></td>
                                         <td><?= $cc->created_date;  ?></td>
+                                        <td><?php if($cc->transaction_id==''){echo "Unset";}else{echo $cc->transaction_id;}  ?></td>
 
                                         <td>
                                             <div class="btn-group" role="group">
@@ -89,9 +91,11 @@ $app = new controller;
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve</a>
-                                                    <a class="dropdown-item" href="customer-edit?fib=<?= base64_encode($cc->id); ?>">Approve & Dispatch</a>
-                                                    <a class="dropdown-item" href="customize_cheque?fib=<?= base64_encode($cc->id); ?>">Edit Cheque</a>
+                                                    <a class="dropdown-item app_cheq" style="cursor: pointer;" data-item="<?= $cc->vendor_name; ?> / Cheque: <?= $cc->cheque_no;  ?> / Bank name: <?= $cc->bank_name;  ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>" data-trnx="<?= $cc->transaction_id; ?>"> Approve Cheque</a>
+                                                    <?php if($cc->completed=='yes'){echo "<span class='dropdown-item text-danger'>Dispatched</span>";}else{
+                                                        include "script/button_cheque_approve.php"; }  ?>
+
+                                                   <a class="dropdown-item" href="customize_cheque?fib=<?= base64_encode($cc->id); ?>">Edit Cheque</a>
                                                     <hr>
                                                     <a class="dropdown-item remove_items" style="cursor: pointer;" data-item="<?= $cc->vendor_name; ?> / Cheque: <?= $cc->cheque_no;  ?> / Bank name: <?= $cc->bank_name;  ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>">Delete</a>
                                                 </div>
@@ -160,19 +164,16 @@ $app = new controller;
                             const item = $(this).attr("data-item");
                             const secure = $(this).attr("data-secure");
                             // show in text field
-                            $("#uid").val(pid);
-                            $("#catname").val(item);
-                            $("#secure").val(secure);
+                            $("#uid2").val(pid);
+                            $("#catname2").val(item);
+                            $("#secure2").val(secure);
                             //display modal
                             $('#del_cat').modal('show');
-                            $("#del_stf").click(function () {
-                                const uid = $("#uid").val();
-                                const sb = $("#sb").val();
-                                const secure = $("#secure").val();
-                                const btn = $("#del_stf");
+                            $("#res_cheque").click(function () {
+                                const uid = $("#uid2").val();
+                                const secure = $("#secure2").val();
+                                const btn = $("#res_cheque");
                                 btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Deleting...');
-                                //validate
-                                //call Ajax
                                 if (uid === '' || uid === 0) {
                                     toastr.warning('Please check selection.', 'warning');
                                     const btn = $("#del_stf");
@@ -195,8 +196,118 @@ $app = new controller;
                                                 toastr.error(data, 'Bad Request');
                                                 setTimeout(
                                                     function () {
-                                                        const btn = $("#save_btn");
-                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create Cheque');
+                                                        const btn = $("#res_cheque");
+                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Delete Cheque');
+                                                    }, 2000);
+                                            }
+
+                                        }
+                                    });
+                                }
+                            });
+                        });
+
+                        $(document).on('click', '.app_cheq', function() {
+                            const pid = $(this).attr("data-id");
+                            const item = $(this).attr("data-item");
+                            const trnx = $(this).attr("data-trnx");
+                            const secure = $(this).attr("data-secure");
+                            // show in text field
+                            $("#uid").val(pid);
+                            $("#catname").val(item);
+                            $("#secure").val(secure);
+                            $("#trnx1").val(trnx);
+                            //display modal
+                            $('#app_cheq').modal('show');
+                            $("#del_stf").click(function () {
+                                const uid = $("#uid").val();
+                                const sb = $("#sb").val();
+                                const secure = $("#secure").val();
+                                const trnx1 = $("#trnx1").val();
+                                const btn = $("#del_stf");
+                                btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Deleting...');
+                                //validate
+                                //call Ajax
+                                if (uid === '' || uid === 0) {
+                                    toastr.warning('Please check selection.', 'warning');
+                                    const btn = $("#del_stf");
+                                    btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Try Again...');
+                                } else {
+                                    $.ajax({
+                                        url: "script/approve_cheque",
+                                        method: "POST",
+                                        data: {
+                                            uid: uid,secure:secure,trnx1:trnx1
+                                        },
+                                        success: function (data) {
+                                            if(data.trim() == "done"){
+                                                toastr.success('Completed.', 'Success');
+                                                setTimeout(
+                                                    function () {
+                                                        window.location.href='chque_man';
+                                                    }, 2000);
+                                            }else{
+                                                toastr.error(data, 'Bad Request');
+                                                setTimeout(
+                                                    function () {
+                                                        const btn = $("#del_stf");
+                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Approve Cheque');
+                                                    }, 2000);
+                                            }
+
+                                        }
+                                    });
+                                }
+                            });
+                        });
+
+
+                        $(document).on('click', '.app_cheqas', function() {
+                            const pid = $(this).attr("data-id");
+                            const item = $(this).attr("data-item");
+                            const secure = $(this).attr("data-secure");
+                            const trnx = $(this).attr("data-trnx");
+                            const che = $(this).attr("data-che");
+                            // show in text field
+                            $("#uid1").val(pid);
+                            $("#catname1").val(item);
+                            $("#secure1").val(secure);
+                            $("#trnx").val(trnx);
+                            $("#che").val(che);
+                            //display modal
+                            $('#app_cheqc').modal('show');
+                            $("#app_che").click(function () {
+                                const uid1 = $("#uid1").val();
+                                const sb = $("#sb").val();
+                                const secure = $("#secure").val();
+                                const btn = $("#app_che");
+                                btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Deleting...');
+                                //validate
+                                //call Ajax
+                                if (uid1 === '' || uid1 === 0) {
+                                    toastr.warning('Please check selection.', 'warning');
+                                    const btn = $("#app_che");
+                                    btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Try Again...');
+                                } else {
+                                    $.ajax({
+                                        url: "script/cheque_dispatch",
+                                        method: "POST",
+                                        data: {
+                                            uid1: uid1,secure:secure,trnx:trnx,che:che
+                                        },
+                                        success: function (data) {
+                                            if(data.trim() == "done"){
+                                                toastr.success('Completed.', 'Success');
+                                                setTimeout(
+                                                    function () {
+                                                       // window.location.href='chque_man';
+                                                    }, 2000);
+                                            }else{
+                                                toastr.error(data, 'Bad Request');
+                                                setTimeout(
+                                                    function () {
+                                                        const btn = $("#del_stf");
+                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Approve Cheque');
                                                     }, 2000);
                                             }
 
@@ -213,6 +324,75 @@ $app = new controller;
 </body>
 </html>
 
+
+
+
+<div class="modal fade" id="app_cheqc" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="title font-weight-bold" id="defaultModalLabel">Approve Cheque .....</h6>
+            </div>
+            <span class="m-l-10 text-danger">Please note this action is permanent</span>
+            <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <input type="text" placeholder=""
+                                   class="float-right form-control" name="catname" id="catname1" readonly="" required>
+                            <input type="hidden" name="uid" id="uid1">
+                            <input type="hidden" name="trnx" id="trnx">
+                            <input type="hidden" name="che" id="che">
+                            <input type="hidden" name="secure" id="secure1" value="<?= $binder; ?>">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary font-weight-bold" id="app_che" value="Approve Cheque & Dispatch">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="app_cheq" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="title font-weight-bold" id="defaultModalLabel">Approve Cheque</h6>
+            </div>
+            <span class="m-l-10 text-danger">Please note this action is permanent</span>
+            <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <input type="text" placeholder=""
+                                   class="float-right form-control" name="catname" id="catname" readonly="" required>
+                            <input type="hidden" name="uid" id="uid">
+                            <input type="hidden" name="uid" id="trnx1">
+                            <input type="hidden" name="secure" id="secure" value="<?= $binder; ?>">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary font-weight-bold" id="del_stf" value="Approve Cheque">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
 <div class="modal fade" id="del_cat" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -221,22 +401,22 @@ $app = new controller;
             </div>
             <span class="m-l-10 text-danger">Please note this action is permanent</span>
             <div class="modal-body">
-                <form id="postcatdel" method="post">
+
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <input type="text" placeholder="Delete Cheque"
-                                   class="float-right form-control" name="catname" id="catname" readonly="" required>
-                            <input type="hidden" name="uid" id="uid">
-                            <input type="hidden" name="secure" id="secure">
+                                   class="float-right form-control" name="catname" id="catname2" readonly="" required>
+                            <input type="hidden" name="uid" id="uid2">
+                            <input type="hidden" name="secure" id="secure2">
                         </div>
                     </div>
             </div>
 
             <div class="modal-footer">
-                <input type="submit" class="btn btn-primary font-weight-bold" id="del_stf" value="Delete Cheque">
+                <input type="submit" class="btn btn-primary font-weight-bold" id="res_cheque" value="Delete Cheque">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
             </div>
-            </form>
+
         </div>
 
     </div>

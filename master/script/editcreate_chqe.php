@@ -14,28 +14,23 @@
     $duedate = $add_roles->post_request('duedate');
     $chqe_date = $add_roles->post_request('chqe_date');
     $chq_bank = $add_roles->post_request('bnak');
+    $cheq_id = $add_roles->post_request('binder_id');
 
     try {
         if (filter_var($cn, FILTER_VALIDATE_INT) !== false) {
             if ($customer_id == 0) {
                 echo "Please choose a customer!, Try Again";
-            } else {
-                $check_cheque = $add_roles->check_cheque($key_grant,$cn);
-                if($check_cheque ==0){
+            }else{
                     if($chq_bank==0){
                         echo "Please choose a bank";
                     }else{
-                        $newrolesx = $add_roles->add_new_chqe($key_grant, $customer_id, $pay_status, $cn, $camount, $duedate, $chqe_date,$chq_bank);
-                        if ($newrolesx == "success") {
+                        $newrolesx = $add_roles->update_cheque($key_grant, $customer_id, $pay_status, $cn, $camount, $duedate, $chqe_date,$chq_bank,$cheq_id);
+                        if ($newrolesx == "success"){
                             echo 'done';
-                        } else {
+                        }else {
                             echo "Invalid command";
                         }
                     }
-
-                }else{
-                    echo "The cheque number has been used!";
-                }
             }
 
         } else {

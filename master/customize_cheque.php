@@ -80,11 +80,12 @@ $ccc = $app->edit_cheque($key_grant, $get_id);
                                     <div class="col-10">
                                         <form id="submitForm" method="post" name="submitForm">
                                             <input type="hidden" name="binder" value="<?= $binder;  ?>" aria-label="cheque finder">
+                                            <input type="hidden" name="binder_id" value="<?= $get_id;  ?>" aria-label="cheque finder">
                                             <div class="form-group">
                                                 <label for="Choose Customer">Select Customer</label>
                                                 <select class="form-control show-tick ms select2"
                                                         data-placeholder="Select" name="customer" for="Choose Customer" aria-label="fetch params">
-                                                    <option value="0">Choose Customer</option>
+
                                                     <option value="<?= $ccc->id; ?>"><?= $ccc->vendor_name; ?></option>
                                                     <?php
                                                     $get_category = $app->getcustomer_lentose($key_grant);

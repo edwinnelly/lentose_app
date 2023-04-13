@@ -30,7 +30,7 @@ $app = new controller;
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
                                         class="fa fa-arrow-left"></i></a>Item Categories</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">Items</li>
                             <li class="breadcrumb-item active">Categories</li>
                         </ul>

@@ -12,16 +12,14 @@ $sum_cart = $app->sum_carts($key_grant);
     ?>
     <!-- CSS file from CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.min.css" />
-
-
 </head>
 <body class="theme-cyan">
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>
-        <p>Please wait...</p>
-    </div>
-</div>
+<!--<div class="page-loader-wrapper">-->
+<!--    <div class="loader">-->
+<!--        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>-->
+<!--        <p>Please wait...</p>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="wrapper">
     <?php
     require_once 'component/header.php';
@@ -449,7 +447,7 @@ $sum_cart = $app->sum_carts($key_grant);
                                     <select class="form-control" id="my-select" name="chqe" required  placeholder="Pick a cheque number..." style="width: 100%">
                                         <option>Choose Cheque Number</option>
                                         <?php
-                                        $get_category = $app->fetch_cheque($key_grant);
+                                        $get_category = $app->fetch_cheque_optioned($key_grant);
                                         $count = 0;
                                         foreach ($get_category as $cc) {
                                             $count++;
