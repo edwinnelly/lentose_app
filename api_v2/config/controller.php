@@ -309,6 +309,33 @@ class controller extends dbc
             $p_info = $this->product_info($row['pid']);
             $obj->items_name = $p_info->items_name;
             $obj->photo1 = $p_info->photo1;
+            $obj->description_inventory = $p_info->description_inventory;
+
+            $categories[] = $obj;
+        }
+        return json_encode($categories);
+    }
+
+
+/** function to get shop categories **/
+    public function open_wishlist($public_key, $email)
+    {
+        $query = "SELECT * FROM e_shop_carts_wishlist WHERE user_key='$public_key' and cus_email='$email'";
+        $query = $this->run_query($query);
+        $categories = array();
+        while ($row = $this->get_result($query)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->pid = $row['pid'];
+            $obj->qty = $row['qty'];
+            $obj->amount = $row['amount'];
+            $obj->unpaid = $row['unpaid'];
+            $obj->added_date = $row['added_date'];
+
+            $p_info = $this->product_info($row['pid']);
+            $obj->items_name = $p_info->items_name;
+            $obj->photo1 = $p_info->photo1;
+            $obj->description_inventory = $p_info->description_inventory;
 
             $categories[] = $obj;
         }
@@ -563,6 +590,51 @@ class controller extends dbc
             $obj->cat2 = $row['cat2'];
             $obj->cat3 = $row['cat3'];
             $obj->cat4 = $row['cat4'];
+            $get_work_cen = $this->get_cat1($row['cat1'],$row['key_grant']);
+            $obj->category_1 = $get_work_cen->category_name;
+
+            $categories[] = $obj;
+        }
+        return json_encode($categories);
+    }
+
+    public function fetch_search($public_key, $pid)
+    {
+        $query = "SELECT * FROM product_tables WHERE items_name LIKE '%$pid%' OR description_inventory LIKE '%$pid%'
+and key_grant='$public_key'";
+        $query = $this->run_query($query);
+        $categories = array();
+        while ($row = $this->get_result($query)) {
+            $obj = new stdClass();
+            $obj->pid = $row['pid'];
+            $obj->items_name = $row['items_name'];
+            $obj->key_grant = $row['key_grant'];
+            $obj->item_type = $row['item_type'];
+            $obj->vendor_id = $row['vendor_id'];
+            $obj->description_inventory = $row['description_inventory'];
+            $obj->attribute = $row['attribute'];
+            $obj->item_size = $row['item_size'];
+            $obj->on_hand_qty = $row['on_hand_qty'];
+            $obj->aval_qty = $row['aval_qty'];
+            $obj->reorder_point = $row['reorder_point'];
+            $obj->unit_measurement = $row['unit_measurement'];
+            $obj->barcode = $row['barcode'];
+            $obj->upc = $row['upc'];
+            $obj->alt_look_up = $row['alt_look_up'];
+            $obj->regular_price = $row['regular_price'];
+            $obj->order_price = $row['order_price'];
+            $obj->average_unit_cost = $row['average_unit_cost'];
+            $obj->tax = $row['tax'];
+            $obj->photo1 = $row['photo1'];
+            $obj->photo2 = $row['photo2'];
+            $obj->photo3 = $row['photo3'];
+            $obj->photo4 = $row['photo4'];
+            $obj->cat1 = $row['cat1'];
+            $obj->cat2 = $row['cat2'];
+            $obj->cat3 = $row['cat3'];
+            $obj->cat4 = $row['cat4'];
+            $get_work_cen = $this->get_cat1($row['cat1'],$row['key_grant']);
+            $obj->category_1 = $get_work_cen->category_name;
 
             $categories[] = $obj;
         }
@@ -585,6 +657,19 @@ class controller extends dbc
             $categories[] = $obj;
         }
         return json_encode($categories);
+    }
+
+    //add to cart
+    public function adde_shop_carts_wishlist($public_key, $pid, $qty, $amount, $email)
+    {
+        $dated = date('d-m-Y h:i:s');
+         $query = "INSERT INTO `e_shop_carts_wishlist` (`id`, `pid`, `qty`, `user_key`, `amount`, `cus_email`, `added_date`, `unpaid`, `paid`, `approved`, `delivering`, `delivered`) VALUES (NULL, '$pid', '$qty', '$public_key', '$amount', '$email', '$dated', 'no', 'no', 'no', 'no', 'no')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return json_encode("success");
+        } else {
+            return json_encode("Invalid Command");
+        }
     }
 
     //add to cart
@@ -614,7 +699,7 @@ class controller extends dbc
 
     public function delete_carts($public_key, $pid,$email)
     {
-        $query = "delete from e_shop_carts where pid='$pid' and user_key='$public_key' and cus_email='$email'";
+        $query = "delete from e_shop_carts where id='$pid' and user_key='$public_key' and cus_email='$email' and unpaid='no'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return json_encode("success");
@@ -623,13 +708,38 @@ class controller extends dbc
         }
     }
 
-    public function clear_carts($public_key,$email)
+    public function delete_wish($public_key, $pid,$email)
+    {
+        $query = "delete from e_shop_carts_wishlist where id='$pid' and user_key='$public_key' and cus_email='$email'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return json_encode("success");
+        } else {
+            return json_encode("Invalid Command");
+        }
+    }
+
+    public function check_out($public_key,$email)
     {
         $query = "update e_shop_carts set unpaid='yes',paid='yes' where unpaid='no' and user_key='$public_key' and cus_email='$email'";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return json_encode("success");
         } else {
+            return json_encode("Invalid Command");
+        }
+    }
+
+
+
+
+    public function clear_carts($public_key,$email)
+    {
+        $query = "delete from e_shop_carts where unpaid='no' and user_key='$public_key' and cus_email='$email'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true){
+            return json_encode("success");
+        } else{
             return json_encode("Invalid Command");
         }
     }
@@ -657,6 +767,19 @@ class controller extends dbc
             return "success";
         } else {
             return "Email Already Exist";
+        }
+    }
+
+    //validate user email
+    public function validateUserWishlist($email,$public_key,$pid)
+    {
+        $query = "select * from e_shop_carts_wishlist where email_e='$email' and host_key='$public_key' and pid='$pid'";
+        $run_qry = $this->run_query($query);
+        $check_email = $this->get_number_of_row($run_qry);
+        if ($check_email <1) {
+            return "success";
+        } else {
+            return "Item Already Exist";
         }
     }
 

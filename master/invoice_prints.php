@@ -33,12 +33,7 @@ $get_ids = base64_decode($app->get_request('sid'));
 
 </head>
 <body class="theme-cyan">
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><img src="../vector/default-monochrome.svg" height="150" alt="Lentose" style="height: 50px"></div>
-        <p>Please wait...</p>
-    </div>
-</div>
+
 <div id="wrapper">
     <?php
     require_once 'component/header.php';
@@ -198,6 +193,9 @@ $get_ids = base64_decode($app->get_request('sid'));
             $('body').empty().html(printcontent);
             window.print();
             $('body').html(restorepage);
+            setTimeout(function() {
+                $("#ccv").show();
+            }, 1000);
         }
 
         $(".descvs").on('mouseover', (function(e) {

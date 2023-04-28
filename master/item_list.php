@@ -83,7 +83,7 @@ $app = new controller;
                                     <th><?= $count; ?></th>
                                     <td><img src="<?php if($cc->photo1==''){echo 'https://lentose.com/master/icons/iconse.png';}else{echo 'master/'.$cc->photo1;} ?>" alt="Item Image" height="80"></td>
                                     <td><?= $cc->items_name; ?></td>
-                                    <td><?= $app->stringFormat($cc->description_inventory, 50); ?></td>
+                                    <td>-<?php  //$dsc=(substr($cc->description_inventory,0, 20)); echo htmlspecialchars_decode($dsc);    ?></td>
                                     <td><?= $cc->attribute; ?></td>
                                     <td><?= $cc->item_size; ?></td>
                                     <td><?= number_format($cc->regular_price); ?></td>

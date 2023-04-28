@@ -3,9 +3,9 @@ include_once('cores.php');
 include_once('db-config.php');
 include_once('controller.php');
 $app = new controller;
-$pid = $app->get_request('pid');
-$public_key = $app->get_request('user_key');
-$email = $app->get_request('email');
+echo $pid = $app->get_request('pid');
+echo $public_key = $app->get_request('user_key');
+echo $email = $app->get_request('email');
 if($public_key=='' && $pid=='' && $pid==0){
     echo'Invalid Api Call';
 }else{

@@ -25,13 +25,20 @@ $app = new controller;
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row">
-                    <div class="col-lg-5 col-md-8 col-sm-12">
+                    <div class="col-lg-6 col-md-8 col-sm-12">
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
                                         class="fa fa-arrow-left"></i></a>Customer Log List</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">App</li>
                             <li class="breadcrumb-item active">Log Card</li>
+                            <li class="breadcrumb-item active"><a href="e_logs"> <button type="button" class="btn btn-primary btn-outline-primary" style="margin-left: 16px">
+                                      Log Manager
+                                    </button></a></li>
+
+                                    <li class="breadcrumb-item active"><a href="customer-elogs"> <button type="button" class="btn btn-primary btn-outline-primary" style="margin-left: 16px">
+                                      All Log Manager
+                                    </button></a></li>
                         </ul>
                     </div>
 
@@ -46,6 +53,7 @@ $app = new controller;
                                 <h6>Add New Log</h6>
                                 <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                         data-target="#smallModal11"><i class="fa fa-plus-circle"></i></button>
+
                             </div>
                         </div>
                     </div>
@@ -63,49 +71,6 @@ $app = new controller;
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <div class="body text-center">
-                            <div class="chart easy-pie-chart-1" data-percent="100"><span><img src="icon/check-mark.png"
-                                                                                              alt="user"
-                                                                                              class="rounded-circle"/></span>
-                            </div>
-                            <h6>John Smith</h6>
-                            <ul class="social-links list-unstyled">
-                                <li><a title="facebook" href="javascript:void(0);"><i
-                                                class="zmdi zmdi-facebook"></i></a></li>
-                                <li><a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a>
-                                </li>
-                                <li><a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a>
-                                </li>
-                            </ul>
-                            <small>795 Folsom Ave, Suite 600 San Francisco,<br> CADGE 94107</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <div class="body text-center">
-                            <div class="chart easy-pie-chart-1" data-percent="10"><span><img src="icon/expired.png"
-                                                                                             alt="user"
-                                                                                             class="rounded-circle"/></span>
-                            </div>
-                            <h6>John Smith</h6>
-                            <ul class="social-links list-unstyled">
-                                <li><a title="facebook" href="javascript:void(0);"><i
-                                                class="zmdi zmdi-facebook"></i></a></li>
-                                <li><a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a>
-                                </li>
-                                <li><a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a>
-                                </li>
-                            </ul>
-                            <small>795 Folsom Ave, Suite 600 San Francisco,<br> CADGE 94107</small>
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
         </div>
@@ -182,7 +147,7 @@ $app = new controller;
                             function () {
                                 var btn = $("#save_btn_cat1");
                                 btn.attr('disabled', false).html("<i class='fa fa-spin fa-spinner'></i> processing");
-                            }, 3000);
+                            }, 4000);
 
                     }
                 },
@@ -254,12 +219,39 @@ $app = new controller;
                         </div>
 
                         <div class="col-12">
+                            <label class="control-label">Select Customer</label>
+                            <select class="form-control show-tick ms select2"
+                                        data-placeholder="Select" name="customerid">
+                                    <option value="0">Default</option>
+                                    <?php
+                                    $get_category = $app->getcustomer_lentose($key_grant);
+                                    foreach ($get_category as $cc) {
+                                        ?>
+                                        <option value="<?= $cc->id; ?>"><?= $cc->vendor_name; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                        </div>
+
+
+                        <div class="col-12">
                             <label class="control-label">Choose Transaction</label>
                             <select class="form-control show-tick m-b-10" id="my-select" name="transaction">
                                 <option value="1">Choose Transaction</option>
-                                <option>John Smith</option>
+                                <?php
+                                                        $get_category = $app->fetch_sales_history($key_grant);
+                                                        foreach ($get_category as $cc) {
+                                                        ?>
+                                <option value="<?= $cc->sales_id  ?> "><?= $cc->sales_id  ?> / <?= $cc->vendor_name; ?> / <?php $plant =$app->total_paid_carts($cc->sales_id,$key_grant); echo  number_format($plant->price_sold);  ?></option>
+                                <?php
+
+                                                        }
+                                                        ?>
                             </select>
                         </div>
+
+                      
 
                         <div class="col-12">
                             <label class="control-label">Choose Category</label>
@@ -279,29 +271,29 @@ $app = new controller;
                         <div class="col-12">
                             <label class="control-label">Description</label>
                             <div class="form-group">
-                                <textarea type="number" name="description" class="form-control" placeholder="Description"></textarea>
+                                <textarea type="number" name="description" class="form-control" placeholder="Description" required></textarea>
                             </div>
                         </div>
                         <div class="col-12">
                             <label class="control-label">Choose Status</label>
                             <select class="form-control show-tick m-b-10" name="status">
-                                <option>Choose Status</option>
-                                <option>Pending</option>
-                                <option>Completed</option>
+                                <option value="Pending">Choose Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
 
                         <div class="col-12">
                             <label class="control-label">Create Date</label>
                             <div class="form-group">
-                                <input type="datetime-local" name="create_date" class="form-control" placeholder="Create Date">
+                                <input type="datetime-local" name="create_date" class="form-control" placeholder="Create Date" required>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <label class="control-label">Set Due Date</label>
                             <div class="form-group">
-                                <input type="datetime-local" name="due_date" class="form-control" placeholder="Set Due Date">
+                                <input type="datetime-local" name="due_date" class="form-control" placeholder="Set Due Date" required>
                             </div>
                         </div>
 

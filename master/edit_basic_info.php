@@ -275,7 +275,6 @@ $get_all_items = $app->edit_item_all($key_grant,$sid);
                                         success: function(data) {
                                             $('#category2').html(data);
                                         },
-
                                     });
                                 }));
 

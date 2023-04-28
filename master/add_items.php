@@ -9,6 +9,10 @@ $app = new controller;
     <?php
     require_once 'component/meta_config.php';
     ?>
+    <link rel="stylesheet" href="trumbowyg/dist/ui/trumbowyg.css">
+
+
+
 </head>
 <body class="theme-cyan">
 <div class="page-loader-wrapper">
@@ -103,13 +107,13 @@ $app = new controller;
                                                     <input type="text" id="text" class="form-control" name="item_name" required>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="phone-ex" class="control-label">Item Description</label>
-                                                    <textarea class="control-label form-control"
-                                                              name="description" required></textarea>
-                                                </div>
-                                            </div>
+<!--                                            <div class="col-lg-3 col-md-6 col-sm-12">-->
+<!--                                                <div class="form-group">-->
+<!--                                                    <label for="phone-ex" class="control-label">Item Description</label>-->
+<!--                                                    <textarea class="control-label form-control"-->
+<!--                                                              name="description" required></textarea>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
                                             <div class="col-lg-3 col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <label for="tax-id" class="control-label">Attribute</label>
@@ -155,6 +159,25 @@ $app = new controller;
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h2> Description Info</h2>
+                                        </div>
+                                        <div class="body">
+                                            <div class="row clearfix">
+
+                                                <div>
+                                                    <textarea id="trumbowyg-demo" name="description" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 <div class="row clearfix">
 
                                     <div class="col-md-12">
@@ -431,6 +454,10 @@ $app = new controller;
 
 
                             })
+                        </script>
+                        <script src="trumbowyg/dist/trumbowyg.js"></script>
+                        <script>
+                            $('#trumbowyg-demo').trumbowyg();
                         </script>
 </body>
 </html>

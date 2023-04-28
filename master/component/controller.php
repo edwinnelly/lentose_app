@@ -30,6 +30,22 @@ class controller extends dbc
         }
     }
 
+public function cutNum($num, $precision = 2) {
+    return floor($num) . substr(str_replace(floor($num), '', $num), 0, $precision + 1);
+}
+
+
+    public function numberFormatPrecision($number, $precision = 2, $separator = '.')
+{
+    $numberParts = explode($separator, $number);
+    $response = $numberParts[0];
+    if (count($numberParts)>1 && $precision > 0) {
+        $response .= $separator;
+        $response .= substr($numberParts[1], 0, $precision);
+    }
+    return $response;
+}
+
     /**  function that allow int and float  */
     public function allowIntsAndFloatsOnly($str)
     {
@@ -96,6 +112,7 @@ class controller extends dbc
     }
 
 
+
     public function get_customer_data($get_prod_id, $key_grant)
     {
         $query = "select * from customer_lentose where id='$get_prod_id' and key_grant='$key_grant'";
@@ -118,6 +135,7 @@ class controller extends dbc
 
         return $obj;
     }
+
 
 
     public function get_vendor_data($get_prod_id, $key_grant)
@@ -159,6 +177,24 @@ class controller extends dbc
             $obj->date_added = $row['date_added'];
             $get_work_cen = $this->total_items_by_category($row['id']);
             $obj->category_id_custom = $get_work_cen->category_id_custom;
+            $categories[] = $obj;
+        }
+        return $categories;
+    }
+
+    /** function to get shop categories **/
+    public function log_list($user_key)
+    {
+        $query = "SELECT * FROM customer_log WHERE host_key='$user_key'";
+        $query = $this->run_query($query);
+        $categories = array();
+        while ($row = $this->get_result($query)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->host_key = $row['host_key'];
+            $obj->category_name = $row['category_name'];
+            $obj->created_date = $row['created_date'];
+
             $categories[] = $obj;
         }
         return $categories;
@@ -308,6 +344,17 @@ class controller extends dbc
         }
     }
 
+    public function update_log_categories($infos, $pid_key, $key_grant)
+    {
+        $query = "update customer_log set category_name='$infos' where id='$pid_key' and host_key='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
     public function update_product_category_ads($infos, $pid_key, $key_grant)
     {
         $query = "update customads_category set category_postomg='$infos' where id='$pid_key' and user_key='$key_grant'";
@@ -432,10 +479,39 @@ class controller extends dbc
         }
     }
 
-    public function add_category_log_list($title, $status, $due_date, $transaction, $create_date, $category_id, $description, $key_grant)
+
+
+    public function add_category_log_list_track($description,$create_date,$postid,$key_grant)
+    {
+    
+     $query = "INSERT INTO `customer_log_list_history` (`id`, `post_id`, `description`, `status`, `created_date`, `host_key`, `store_id`) VALUES (NULL, '$postid', '$description', '', '$create_date', '$key_grant', '0')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+    public function new_debts($key_grant,$secure,$description,$create_date,$amount,$customer,$payment_date)
+    {
+    
+      $query = "INSERT INTO `debt_profile` (`id`, `customer_id`, `store_key`, `shop_id`, `opened_by`, `amount_total`, `amount_paid`, `status`, `date_opened`, `date_cleared`, `trans_id`, `description`) VALUES (NULL, '$customer', '$key_grant', '0', 'Host', '$amount', '0', '0', '$payment_date', '', '0', '$description')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+
+
+
+    public function add_category_log_list($title, $status, $due_date, $transaction, $create_date, $category_id, $description, $key_grant,$customerid)
     {
         $dated = date('d-m-Y h:i:s');
-        $query = "INSERT INTO `customer_log_list` (`id`, `title`, `transaction_id`, `category_id`, `description`, `status`, `created_date`, `due_date`, `host_key`, `store_id`) VALUES (NULL, '$title', '$transaction', '$category_id', '$description', '$status', '$create_date', '$due_date', '$key_grant', '0')";
+        $query = "INSERT INTO `customer_log_list` (`id`, `title`, `transaction_id`, `category_id`, `description`, `status`, `created_date`, `due_date`, `host_key`, `store_id`,`customer_id`) VALUES (NULL, '$title', '$transaction', '$category_id', '$description', '$status', '$create_date', '$due_date', '$key_grant', '0','$customerid')";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -570,7 +646,7 @@ class controller extends dbc
     public function add_new_chqe($key_grant, $customer_id, $pay_status, $cn, $camount, $duedate, $chqe_date, $chq_bank)
     {
         $dated = date('d-m-Y');
-        $query = "INSERT INTO `e_cheque` (`id`, `customer_id`, `cheque_no`, `amount`, `due_date`, `created_date`, `status`, `host_key`, `branch_id`, `bank_id`) VALUES (NULL, '$customer_id', '$cn', '$camount', '$duedate', '$chqe_date', '$pay_status', '$key_grant', '0','$chq_bank')";
+         $query = "INSERT INTO `e_cheque` (`id`, `customer_id`, `cheque_no`, `amount`, `due_date`, `created_date`, `status`, `host_key`, `branch_id`, `bank_id`) VALUES (NULL, '$customer_id', '$cn', '$camount', '$duedate', '$chqe_date', '$pay_status', '$key_grant', '0','$chq_bank')";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
@@ -725,6 +801,12 @@ class controller extends dbc
         return $this->runner($query);
     }
 
+    public function delete_category_elogs($pid, $key_grant)
+    {
+        $query = "delete from customer_log where id='$pid' and host_key='$key_grant'";
+        return $this->runner($query);
+    }
+
     public function empty_carts($ads_id, $key_grant)
     {
         $query = "delete from sales where id='$ads_id' and store_key='$key_grant' limit 1";
@@ -780,11 +862,49 @@ class controller extends dbc
         return $this->runner($query);
     }
 
+
+    public function delete_debts_history($pid, $key_grant)
+    {
+         $query = "delete from debt_payments where id='$pid' and host_key='$key_grant'";
+        return $this->runner($query);
+    }
+
+
+
+    public function delete_category_logse($pid, $key_grant)
+    {
+         $query = "delete from customer_log_list_history where id='$pid' and host_key='$key_grant'";
+        return $this->runner($query);
+    }
+
     public function delete_vendor($pid, $key_grant)
     {
         $query = "delete from supplier_lentose where id='$pid' and key_grant='$key_grant'";
         return $this->runner($query);
     }
+
+
+    public function delete_customer_logged($pid, $key_grant)
+    {
+        $query = "delete from customer_log_list where id='$pid' and host_key='$key_grant'";
+        return $this->runner($query);
+    }
+
+    public function delete_customer_loan($pid, $key_grant)
+    {
+        $query = "delete from debt_profile where id='$pid' and store_key='$key_grant'";
+        return $this->runner($query);
+    }
+
+
+    public function update_log_status($pid,$key_grant,$status)
+    {
+        $query = "update customer_log_list set status='$status' where id='$pid' and host_key='$key_grant'";
+        return $this->runner($query);
+    }
+
+
+
 
     public function delete_customer($pid, $key_grant)
     {
@@ -846,6 +966,9 @@ class controller extends dbc
         return $categories;
     }
 
+
+
+    
     public function count_pid_products($public_key)
     {
         $query = "SELECT count(pid) AS total_prod FROM product_tables where key_grant='$public_key'";
@@ -1084,6 +1207,178 @@ class controller extends dbc
     }
 
 
+    public function fetch_debt($public_key)
+    {
+         $query = "select * from debt_profile where store_key='$public_key' order by id desc";
+        $row = $this->get_result($this->run_query($query));
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->customer_id = $row['customer_id'];
+        $obj->title = $row['title'];
+        $obj->transaction_id = $row['trans_id'];
+        $obj->description = $row['description'];
+        $obj->status = $row['status'];
+        $obj->amount_total = $row['amount_total'];
+        $obj->date_opened = $row['date_opened'];
+        $obj->store_key = $row['store_key'];
+        $obj->description = $row['description'];
+        $obj->opened_by = $row['opened_by'];
+        
+
+        //get the customer info
+        $cus_info = $this->get_customer_data($row['customer_id'], $row['store_key']);
+        $obj->vendor_name = $cus_info->vendor_name;
+        $obj->phone = $cus_info->phone;
+
+
+        $cus_info = $this->fetch_all_debt($row['id'], $row['store_key']);
+        $obj->fornow = $cus_info->fornow;
+
+
+        $user_list[] = $obj;
+    }
+    return $user_list;
+
+}
+
+
+
+public function fetch_all_debt($get_prod_id, $key_grant)
+{
+ $query = "select sum(amount_paid) as fornow from debt_payments where debt_id='$get_prod_id' and host_key='$key_grant'";
+    $row = $this->get_result($this->run_query($query));
+    $obj = new stdClass();
+    $obj->id = $row['id'];
+    $obj->fornow = $row['fornow'];
+    
+
+    return $obj;
+}
+
+
+
+
+
+    public function fetch_logs($public_key)
+    {
+         $query = "select * from customer_log_list where host_key='$public_key' order by id desc";
+        $row = $this->get_result($this->run_query($query));
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->customer_id = $row['customer_id'];
+        $obj->title = $row['title'];
+        $obj->transaction_id = $row['transaction_id'];
+        $obj->description = $row['description'];
+        $obj->status = $row['status'];
+        $obj->due_date = $row['due_date'];
+        $obj->created_date = $row['created_date'];
+        $obj->host_key = $row['host_key'];
+        
+
+        //get the customer info
+        $cus_info = $this->get_customer_data($row['customer_id'], $row['host_key']);
+        $obj->vendor_name = $cus_info->vendor_name;
+        $obj->phone = $cus_info->phone;
+
+
+        $user_list[] = $obj;
+    }
+    return $user_list;
+
+}
+
+
+
+public function fetch_debt_views($key_grant,$fib_id)
+    {
+         $query = "select * from debt_payments where host_key='$key_grant' and debt_id='$fib_id'";
+        $row = $this->get_result($this->run_query($query));
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->debt_id = $row['debt_id'];
+        $obj->amount_paid = $row['amount_paid'];
+        $obj->payment_method = $row['payment_method'];
+        $obj->date_paid = $row['date_paid'];
+        
+        $user_list[] = $obj;
+    }
+    return $user_list;
+
+}
+
+
+
+
+
+public function fetch_logs_views($key_grant,$fib_id)
+    {
+          $query = "select * from customer_log_list_history where host_key='$key_grant' and post_id='$fib_id'";
+        $row = $this->get_result($this->run_query($query));
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->customer_id = $row['customer_id'];
+        $obj->title = $row['title'];
+        $obj->transaction_id = $row['transaction_id'];
+        $obj->description = $row['description'];
+        $obj->status = $row['status'];
+        $obj->due_date = $row['due_date'];
+        $obj->created_date = $row['created_date'];
+        $obj->host_key = $row['host_key'];
+        
+
+        //get the customer info
+        $cus_info = $this->get_customer_data($row['customer_id'], $row['host_key']);
+        $obj->vendor_name = $cus_info->vendor_name;
+        $obj->phone = $cus_info->phone;
+
+
+        $user_list[] = $obj;
+    }
+    return $user_list;
+
+}
+
+
+public function fetch_carts($public_key)
+{
+     $query = "select * from customer_log_list where host_key='$public_key'";
+    $qx = $this->run_query($query);
+    $user_list = array();
+    while ($row = $this->get_result($qx)) {
+        $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->customer_id = $row['customer_id'];
+        $obj->title = $row['title'];
+        
+
+        //get the customer info
+        // $cus_info = $this->get_customer_data($row['customer_id'], $row['host_key']);
+        // $obj->vendor_name = $cus_info->vendor_name;
+        // $obj->phone = $cus_info->phone;
+
+        $user_list[] = $obj;
+    }
+    return $user_list;
+}
+
+
+
+
+
+
+
     /** function to reduce the lenght of a string **/
     public function stringFormat($string, $len)
     {
@@ -1095,40 +1390,40 @@ class controller extends dbc
     }
 
 
-    public function fetch_carts($key_grants)
-    {
-        $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id='new'";
-        $qx = $this->run_query($query);
-        $user_list = array();
-        while ($row = $this->get_result($qx)) {
-            $obj = new stdClass();
-            $obj->id = $row['id'];
-            $obj->sales_id = $row['sales_id'];
-            $obj->shop_id = $row['shop_id'];
-            $obj->store_key = $row['store_key'];
-            $obj->product_id = $row['product_id'];
-            $obj->shop_prod_id = $row['shop_prod_id'];
-            $obj->qty = $row['qty'];
-            $obj->price_sold = $row['price_sold'];
-            $obj->selling_price = $row['selling_price'];
-            $obj->cost_price = $row['cost_price'];
-            $obj->seller_name = $row['seller_name'];
-            $obj->seller_type = $row['seller_type'];
-            $obj->returned = $row['returned'];
-            $obj->date_sold = $row['date_sold'];
-            $obj->month = $row['month'];
-            $obj->payment_method = $row['payment_method'];
-            $obj->customer = $row['customer'];
-            $obj->item_name = $row['item_name'];
+    // public function fetch_carts($key_grants)
+    // {
+    //     $query = "select * from sales where store_key='$key_grants' and seller_type='admin' and sales_id='new'";
+    //     $qx = $this->run_query($query);
+    //     $user_list = array();
+    //     while ($row = $this->get_result($qx)) {
+    //         $obj = new stdClass();
+    //         $obj->id = $row['id'];
+    //         $obj->sales_id = $row['sales_id'];
+    //         $obj->shop_id = $row['shop_id'];
+    //         $obj->store_key = $row['store_key'];
+    //         $obj->product_id = $row['product_id'];
+    //         $obj->shop_prod_id = $row['shop_prod_id'];
+    //         $obj->qty = $row['qty'];
+    //         $obj->price_sold = $row['price_sold'];
+    //         $obj->selling_price = $row['selling_price'];
+    //         $obj->cost_price = $row['cost_price'];
+    //         $obj->seller_name = $row['seller_name'];
+    //         $obj->seller_type = $row['seller_type'];
+    //         $obj->returned = $row['returned'];
+    //         $obj->date_sold = $row['date_sold'];
+    //         $obj->month = $row['month'];
+    //         $obj->payment_method = $row['payment_method'];
+    //         $obj->customer = $row['customer'];
+    //         $obj->item_name = $row['item_name'];
 
-            $get_prod_list = $this->edit_item_all($row['store_key'], $row['product_id']);
-            $obj->live_qty = $get_prod_list->on_hand_qty - $row['qty'];
-            $obj->live_pid = $get_prod_list->pid;
+    //         $get_prod_list = $this->edit_item_all($row['store_key'], $row['product_id']);
+    //         $obj->live_qty = $get_prod_list->on_hand_qty - $row['qty'];
+    //         $obj->live_pid = $get_prod_list->pid;
 
-            $user_list[] = $obj;
-        }
-        return $user_list;
-    }
+    //         $user_list[] = $obj;
+    //     }
+    //     return $user_list;
+    // }
 
     public function fetch_carts_chequee($key_grant, $che, $trnx)
     {
@@ -1461,9 +1756,23 @@ class controller extends dbc
         }
     }
 
+    
+
+    public function new_dbet_payment($pid,$key_grant,$pay_method,$amount,$payment_date)
+    {
+        $query = "INSERT INTO `debt_payments` (`id`, `debt_id`, `amount_paid`, `payment_method`, `date_paid`, `host_key`) VALUES (NULL, '$pid', '$amount', '$pay_method', '$payment_date', '$key_grant')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+
     public function axnx($bn)
     {
-        $query = "INSERT INTO `despense_account` (`id`, `account_name`) VALUES (NULL,'$bn');";
+        $query = "INSERT INTO `despense_account` (`id`, `account_name`) VALUES (NULL,'$bn')";
         $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
