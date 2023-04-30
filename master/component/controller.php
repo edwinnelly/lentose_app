@@ -1666,6 +1666,27 @@ public function fetch_carts($public_key)
         }
         return $user_list;
     }
+    public function fetch_accounts($key_grant)
+    {
+        $query = "select * from money_account where host_key='$key_grant' and status= '0'";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->acc_type = $row['acc_type'];
+            $obj->balance = $row['balance'];
+            $obj->created_on = $row['created_on'];
+            $obj->account_number = $row['account_number'];
+            $obj->cr = $row['cr'];
+            $obj->db = $row['db'];
+            $obj->host_key = $row['host_key'];
+            $obj->status = $row['status'];
+        
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
 
     public function check_cheque($key_grant, $cn)
     {
