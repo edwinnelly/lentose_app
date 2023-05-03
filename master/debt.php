@@ -193,7 +193,7 @@ $(document).ready(function () {
 
                                 $("#postcatdel1").on('submit', (function(e) {
                                     e.preventDefault();
-                                    const btn = $("#del_btn_cat");
+                                    const btn = $("#ccx");
                                     btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Deleting Category...');
                                     var datas = new FormData(this);
                                     $.ajax({

@@ -655,6 +655,18 @@ public function cutNum($num, $precision = 2) {
         }
     }
 
+    public function add_new_expenses($key_grant, $account, $category, $info, $amount, $trans_date,$balanced)
+    {
+        $dated = date('d-m-Y');
+         $query = "INSERT INTO `expenses_trackers` (`id`, `description`, `host_key`, `store_id`, `cr`, `dr`, `date_created`, `rec_by`, `auto_check`, `expense_id`, `account_number`, `account_balance`) VALUES (NULL, '$info', '$key_grant', '0', '0', '$amount', '$trans_date', 'By Host', '0', '$category', '$account','$balanced')";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
 
     public function edit_vendor($vcode, $vname, $key_grant, $streets, $city, $state, $zip, $phone, $aphone, $vendor_note, $emails, $website, $fib)
     {
@@ -1731,15 +1743,27 @@ public function fetch_carts($public_key)
 
 
     //All user info sorted by id
-    public function get_user_infos($id)
+    public function get_account_balance($id,$host_key)
     {
-        $query = "select * from staffs_accounts where id='$id'";
+        $query = "select * from money_account where id='$id' and host_key='$host_key'";
         $row = $this->get_result($this->run_query($query));
         $obj = new stdClass();
         $obj->user_id = $row['id'];
-        $obj->email = $row['email'];
-        $obj->fullname = $row['fullname'];
+        $obj->balance = $row['balance'];
+    
         return $obj;
+    }
+
+    public function update_expenses_bal($account,$key_grant,$balanced)
+    {
+        $dated = date('d-m-Y');
+        $query = "update money_account set balance='$balanced' where id='$account' and host_key='$key_grant'";
+        $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
     }
 
 
@@ -1759,6 +1783,28 @@ public function fetch_carts($public_key)
         $obj->branch_id = $row['branch_id'];
         return $obj;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //vt rp
     public function rt_rost($s, $e)
@@ -5372,17 +5418,7 @@ public function fetch_carts($public_key)
         }
     }
 
-    //update student pic
-    public function upload_student_profile_pics($path, $get_user_id)
-    {
-        $query = "update student set photo='$path' where id='$get_user_id'";
-        $run_qry = $this->run_query($query);
-        if ($run_qry == true) {
-            return "success";
-        } else {
-            return "Invalid Command";
-        }
-    }
+   
 
 
 }

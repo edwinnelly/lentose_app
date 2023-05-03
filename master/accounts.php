@@ -131,9 +131,9 @@ $app = new controller;
                             e.preventDefault();
                             const btn = $("#save_btn");
                             btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Saving Changes...');
-                            var datas = new FormData(this);
+                            let datas = new FormData(this);
                             $.ajax({
-                                url: "script/create_chqe",
+                                url: "script/post_expenses",
                                 type: "POST",
                                 data: datas,
                                 contentType: false,
@@ -145,7 +145,7 @@ $app = new controller;
                                         toastr.success('Completed.', 'Success');
                                         setTimeout(
                                             function () {
-                                                window.location.href='chque_man';
+                                                window.location.href='accounts';
                                             }, 2000);
                                     }else{
                                         toastr.error(data, 'Bad Request');
@@ -440,10 +440,11 @@ $app = new controller;
                             <div class="form-group">
                                 <label>Select Account</label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="customer">
+                                        data-placeholder="Select" name="account">
                                     <option value="0">Default</option>
                                     <?php
                                     $get_category = $app->fetch_accounts($key_grant);
+                                
                                     foreach ($get_category as $cc) {
                                         ?>
                                         <option value="<?= $cc->id; ?>"><?= $cc->acc_type; ?></option>
@@ -459,7 +460,7 @@ $app = new controller;
                             <div class="form-group">
                                 <label>Choose Expenses Category </label>
                                 <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="bnak">
+                                        data-placeholder="Select" name="category">
                                     <option value="0">Default</option>
                                     <?php
                                     $get_category = $app->fetch_all_expenses_category($key_grant);
@@ -476,28 +477,25 @@ $app = new controller;
                         <div class="col-10">
                             <div class="form-group">
                                 <label for="phone" class="control-label">Transaction Description</label>
-                                <input type="text" id="text" name="cn" value="" required class="form-control">
+                                <input type="text" id="text" name="info" value="" required class="form-control">
                             </div>
                         </div>
 
                         <div class="col-10">
                             <div class="form-group">
                                 <label for="phone" class="control-label">Expense Amount</label>
-                                <input type="text" id="text" name="camount" value="" required class="form-control">
+                                <input type="text" id="text" name="amount" value="" required class="form-control">
                             </div>
                         </div>
 
                         <div class="col-10">
                             <div class="form-group">
                                 <label for="phone" class="control-label">Transaction Date</label>
-                                <input type="date" id="text" name="chqe_date" value="" required class="form-control">
+                                <input type="date" id="text" name="trans_date" value="" required class="form-control">
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <input type="hidden" id="pid" name="pid">
-                            <input type="hidden" id="sb">
-                        </div>
+                    
                     </div>
                 </div>
                 <div class="modal-footer">
