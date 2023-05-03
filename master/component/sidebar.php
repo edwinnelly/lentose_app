@@ -130,7 +130,7 @@
                             <a href="#" class="has-arrow"><img src="./icon/8679238_money_euro_circle_icon.png" height="21" alt="icons"> <span class="side_bar_adjust">Financial</span></a>
                             <ul>
                                 <li><a href="">Connect to QuickBooks</a> </li>
-                                <li><a href="">Connect to QuickBooks</a> </li>
+                                <li><a href="expenses">Manage Expenses</a> </li>
                                 <li><a href="accounts">Manage Accounts</a> </li>
                                 <li><a href="debt">Debtors List</a> </li>
                                 <li><a href="chque_man">Cheque Manager</a> </li>

@@ -1595,6 +1595,22 @@ public function fetch_carts($public_key)
         }
         return $user_list;
     }
+    //vt rp
+    public function fetch_all_expenses_category($key_grant)
+    {
+        $query = "select * from epenses_category where host_key='$key_grant' and status= '0'";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->category_name = $row['category_name'];
+            $obj->status = $row['status'];
+           
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
 
     public function fetch_cheque_optioned($key_grant)
     {

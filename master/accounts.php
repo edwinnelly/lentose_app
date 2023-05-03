@@ -28,6 +28,10 @@ $app = new controller;
                             <li class="breadcrumb-item"><a href="user_dir"><i class="icon-home"></i></a></li>
                             <li class="breadcrumb-item">Add</li>
                             <li class="breadcrumb-item active">Edit</li>
+                            <li class="breadcrumb-item active"> <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                    data-target="#checkout">
+                                New Expenses
+                            </button></li>
                         </ul>
                     </div>
                     <div class="col-lg-7 col-md-4 col-sm-12 text-right">
@@ -425,7 +429,7 @@ $app = new controller;
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title font-weight-bold" id="defaultModalLabel">Create New Cheque</h6>
+                    <h6 class="title font-weight-bold" id="defaultModalLabel">Create New Expenses</h6>
                 </div>
                 <span class="m-l-10 text-danger">Please note this action is not permanent</span>
                 <div class="modal-body">
@@ -434,15 +438,15 @@ $app = new controller;
                             <form id="submitForm" method="post" name="submitForm">
                                 <input type="hidden" name="binder" value="<?= $binder;  ?>">
                             <div class="form-group">
-                                <label>Select Customer</label>
+                                <label>Select Account</label>
                                 <select class="form-control show-tick ms select2"
                                         data-placeholder="Select" name="customer">
                                     <option value="0">Default</option>
                                     <?php
-                                    $get_category = $app->getcustomer_lentose($key_grant);
+                                    $get_category = $app->fetch_accounts($key_grant);
                                     foreach ($get_category as $cc) {
                                         ?>
-                                        <option value="<?= $cc->id; ?>"><?= $cc->vendor_name; ?></option>
+                                        <option value="<?= $cc->id; ?>"><?= $cc->acc_type; ?></option>
                                         <?php
                                     }
                                     ?>
@@ -451,29 +455,17 @@ $app = new controller;
                             </div>
                         </div>
 
-
                         <div class="col-10">
                             <div class="form-group">
-                                <label>Select Cheque Status</label>
-                                <select class="form-control show-tick ms select2"
-                                        data-placeholder="Select" name="payment" id="pay_status">
-                                    <option>Paid</option>
-                                    <option>Unpaid</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label>Choose Bank Cheque </label>
+                                <label>Choose Expenses Category </label>
                                 <select class="form-control show-tick ms select2"
                                         data-placeholder="Select" name="bnak">
                                     <option value="0">Default</option>
                                     <?php
-                                    $get_category = $app->fetch_all_bank($key_grant);
+                                    $get_category = $app->fetch_all_expenses_category($key_grant);
                                     foreach ($get_category as $cc) {
                                         ?>
-                                        <option value="<?= $cc->id; ?>"><?= $cc->bank_name; ?></option>
+                                        <option value="<?= $cc->id; ?>"><?= $cc->category_name; ?></option>
                                         <?php
                                     }
                                     ?>
@@ -483,29 +475,22 @@ $app = new controller;
 
                         <div class="col-10">
                             <div class="form-group">
-                                <label for="phone" class="control-label">Cheque Number</label>
+                                <label for="phone" class="control-label">Transaction Description</label>
                                 <input type="text" id="text" name="cn" value="" required class="form-control">
                             </div>
                         </div>
 
                         <div class="col-10">
                             <div class="form-group">
-                                <label for="phone" class="control-label">Cheque Amount</label>
+                                <label for="phone" class="control-label">Expense Amount</label>
                                 <input type="text" id="text" name="camount" value="" required class="form-control">
                             </div>
                         </div>
 
                         <div class="col-10">
                             <div class="form-group">
-                                <label for="phone" class="control-label">Cheque Date</label>
+                                <label for="phone" class="control-label">Transaction Date</label>
                                 <input type="date" id="text" name="chqe_date" value="" required class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label for="phone" class="control-label">Cheque Due Date</label>
-                                <input type="date" id="text" name="duedate" value="" required class="form-control">
                             </div>
                         </div>
 
