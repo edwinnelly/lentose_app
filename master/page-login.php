@@ -30,29 +30,22 @@ $app = new controller;
                     <div class="top">
                         <?php
 
-                        if(isset($_POST['auth_user'])){
-                            try {
-                                @$email = $app->post_request('email');
-                                @$password = $app->post_request('password');
-                                $login = $app->auth_users($email, $password);
-                                if($login == 'success'){
-                                    $URL = "user_dir.php";
-                                    echo "<script>location.href='$URL'</script>";
-                                }else{
-                                    echo "<br>";
-                                    echo '<div class="alert alert-danger alert-dismissible" role="alert">
-                                <div class="alert-message">
-                                    <strong>Hello there!</strong> The login details is incorrect!
-                                </div>
+@$email = $app->post_request('email');
+@$password = $app->post_request('password');
+$login = $app->auth_users($email, $password);
+if($login == 'success'){
+    $URL = "user_dir.php";
+    echo "<script>location.href='$URL'</script>";
+}else{
+    echo "<br>";
+    echo '<div class="alert alert-danger alert-dismissible" role="alert">
+<div class="alert-message">
+    <strong>Hello there!</strong> The login details is incorrect!
+</div>
 
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>';
-                                }
-
-                            }catch (Exception $e) {
-                            }
-
-                        }
+<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
                         ?>
                     </div>
                     <div class="header">

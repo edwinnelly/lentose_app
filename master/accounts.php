@@ -46,7 +46,7 @@ $app = new controller;
                         <div class="header">
                             <h2> Account Manager <small>You can view Account here</small></h2>
                             <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                    data-target="#checkout">
+                                    data-target="#account_new">
                                 New Account
                             </button>
                         </div>
@@ -61,8 +61,7 @@ $app = new controller;
                                     <th>Created Date</th>
                                     <th>Account Name</th>
                                     <th>Account Number</th>
-                                    <th>T-Debit</th>
-                                    <th>T-Credit</th>
+                                    
                                     <th>Balance</th>
                                     <th>Action</th>
                                 </tr>
@@ -80,8 +79,7 @@ $app = new controller;
                                         <td><?= $cc->created_on;  ?></td>
                                         <td><?= $cc->acc_type;  ?></td>
                                         <td><?= $cc->account_number;  ?></td>
-                                        <td><?= number_format($cc->db);  ?></td>
-                                        <td><?= $cc->cr;  ?></td>
+                                        
                                         <td><?= number_format($cc->balance);  ?></td>
                                         
                                         <td>
@@ -95,9 +93,9 @@ $app = new controller;
                                                     <?php if($cc->completed=='yes'){echo "<span class='dropdown-item text-danger'>Dispatched</span>";}else{
                                                         include "script/button_cheque_approve.php"; }  ?>
 
-                                                   <a class="dropdown-item" href="customize_cheque?fib=<?= base64_encode($cc->id); ?>">Edit Account</a>
+                                                   <a class="dropdown-item" href="customize_account?fib=<?= base64_encode($cc->id); ?>&&cc=<?= base64_encode($cc->acc_type);  ?>">Edit Account</a>
                                                     <hr>
-                                                    <a class="dropdown-item remove_items" style="cursor: pointer;" data-item="<?= $cc->vendor_name; ?> / Cheque: <?= $cc->cheque_no;  ?> / Bank name: <?= $cc->bank_name;  ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>">Delete</a>
+                                                    <a class="dropdown-item remove_items" style="cursor: pointer;" data-item="<?= $cc->acc_type; ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -133,7 +131,7 @@ $app = new controller;
                             btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Saving Changes...');
                             let datas = new FormData(this);
                             $.ajax({
-                                url: "script/post_expenses",
+                                url: "script/expenses_log",
                                 type: "POST",
                                 data: datas,
                                 contentType: false,
@@ -152,13 +150,52 @@ $app = new controller;
                                        setTimeout(
                                             function () {
                                                 const btn = $("#save_btn");
-                                                btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create Cheque');
+                                                btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create');
                                             }, 2000);
                                     }
                                 },
 
                             });
                         }));
+
+
+
+                        $("#submitForm1").on('submit',(function(e) {
+                            e.preventDefault();
+                            const btn = $("#save_btn");
+                            btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Saving Changes...');
+                            let datas = new FormData(this);
+                            $.ajax({
+                                url: "script/postnewaccount",
+                                type: "POST",
+                                data: datas,
+                                contentType: false,
+                                cache: false,
+                                processData:false,
+                                success: (data)=> {
+                                    
+                                    if(data.trim() == "done"){
+                                        toastr.success('Completed.', 'Success');
+                                        setTimeout(
+                                            function () {
+                                                window.location.href='accounts';
+                                            }, 2000);
+                                    }else{
+                                        toastr.error(data, 'Bad Request');
+                                       setTimeout(
+                                            function () {
+                                                const btn = $("#save_btn");
+                                                btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create');
+                                            }, 2000);
+                                    }
+                                },
+
+                            });
+                        }));
+
+
+
+
 
                         $(document).on('click', '.remove_items', function() {
                             const pid = $(this).attr("data-id");
@@ -181,7 +218,7 @@ $app = new controller;
                                     btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Try Again...');
                                 } else {
                                     $.ajax({
-                                        url: "script/removeCheque",
+                                        url: "script/removeexpenses",
                                         method: "POST",
                                         data: {
                                             uid: uid,secure:secure
@@ -191,14 +228,14 @@ $app = new controller;
                                                 toastr.success('Completed.', 'Success');
                                                 setTimeout(
                                                     function () {
-                                                        window.location.href='chque_man';
+                                                        window.location.href='accounts';
                                                     }, 2000);
                                             }else{
                                                 toastr.error(data, 'Bad Request');
                                                 setTimeout(
                                                     function () {
                                                         const btn = $("#res_cheque");
-                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Delete Cheque');
+                                                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Delete');
                                                     }, 2000);
                                             }
 
@@ -321,6 +358,42 @@ $app = new controller;
 
                     });
 
+                    $(document).ready(function () {
+
+$("#submitForm123").on('submit',(function(e) {
+    
+    e.preventDefault();
+    const btn = $("#save_btn12");
+    btn.attr('disabled', true).html('<i class="fa fa-spin fa-spinner"></i> Saving Changes...');
+    let datas = new FormData(this);
+    $.ajax({
+        url: "script/postnewaccount",
+        type: "POST",
+        data: datas,
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: (data)=> {
+             if(data.trim() == "done"){
+                toastr.success('Completed.', 'Success');
+                setTimeout(
+                    function () {
+                        window.location.href='accounts';
+                    }, 2000);
+            }else{
+                toastr.error(data, 'Bad Request');
+               setTimeout(
+                    function () {
+                        const btn = $("#save_btn");
+                        btn.attr('disabled', false).html('<i class="fa fa-spin fa-spinner"></i> Create');
+                    }, 2000);
+            }
+        },
+
+    });
+}));
+
+});
                 </script>
 </body>
 </html>
@@ -398,7 +471,7 @@ $app = new controller;
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="title font-weight-bold" id="defaultModalLabel">Delete Cheque</h6>
+                <h6 class="title font-weight-bold" id="defaultModalLabel">Delete Account</h6>
             </div>
             <span class="m-l-10 text-danger">Please note this action is permanent</span>
             <div class="modal-body">
@@ -414,7 +487,7 @@ $app = new controller;
             </div>
 
             <div class="modal-footer">
-                <input type="submit" class="btn btn-primary font-weight-bold" id="res_cheque" value="Delete Cheque">
+                <input type="submit" class="btn btn-primary font-weight-bold" id="res_cheque" value="Delete Account">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
             </div>
 
@@ -437,6 +510,7 @@ $app = new controller;
                         <div class="col-10">
                             <form id="submitForm" method="post" name="submitForm">
                                 <input type="hidden" name="binder" value="<?= $binder;  ?>">
+                                <input type="text" name="honeypot" style="display:none;">
                             <div class="form-group">
                                 <label>Select Account</label>
                                 <select class="form-control show-tick ms select2"
@@ -500,6 +574,65 @@ $app = new controller;
                 </div>
                 <div class="modal-footer">
                     <input type="submit" id="save_btn" class="btn btn-primary font-weight-bold" value="Create Now">
+                   <button type="button" class="btn btn-danger font-weight-bold" data-dismiss="modal">X</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="account_new" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title font-weight-bold" id="defaultModalLabel">Create New Account</h6>
+                </div>
+                <span class="m-l-10 text-danger">Please note this action is not permanent</span>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-10">
+                            <form id="submitForm123" method="post" name="submitForm123">
+                                <input type="hidden" name="binder" value="<?= $binder;  ?>">
+                                <input type="text" name="honeypot" style="display:none;">
+                            
+                        </div>
+
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Account Name</label>
+                                <input type="text" id="text" name="acc_name" value="" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Account Number</label>
+                                <input type="text" id="text" name="acc_num" value="" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Opening Balance</label>
+                                <input type="text" id="text" name="open_bal" value="" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Transaction Date</label>
+                                <input type="date" id="text" name="trans_date" value="" required class="form-control">
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" id="save_btn12" class="btn btn-primary font-weight-bold" value="Create Now">
                    <button type="button" class="btn btn-danger font-weight-bold" data-dismiss="modal">X</button>
                 </div>
             </div>

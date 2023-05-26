@@ -5211,6 +5211,7 @@ public function fetch_carts123($key_grants)
         return $obj;
     }
 
+
     public function cr_suspense_cus($s, $e)
     {
         $query = "SELECT SUM(cr) AS amounts FROM customer_account where created_date >= '$s' and created_date <= '$e'";
@@ -5232,6 +5233,7 @@ public function fetch_carts123($key_grants)
         return $obj;
     }
 
+
     //sum dr for cash
     public function cr_vtsxxx($s, $e)
     {
@@ -5242,6 +5244,7 @@ public function fetch_carts123($key_grants)
         $user_list[] = $obj;
         return $obj;
     }
+
 
     //sum dr for cash
     public function dr_bank_acc($s, $e)
@@ -5254,6 +5257,7 @@ public function fetch_carts123($key_grants)
         return $obj;
 
     }
+
 
     //sum dr for cash
     public function dr_bank_acc_s($rtype, $s, $e)

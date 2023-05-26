@@ -131,7 +131,7 @@ $sum_cart = $app->sum_carts($key_grant);
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $get_category = $app->fetch_carts($key_grant);
+                                    $get_category = $app->fetch_carts123($key_grant);
                                     $count = 0;
                                     foreach ($get_category as $cc) {
                                         $count++;
@@ -223,6 +223,7 @@ $sum_cart = $app->sum_carts($key_grant);
                                 cache: false,
                                 processData: false,
                                 success: (data) => {
+                                
                                 if(data.trim() == "done") {
                                 toastr.success('Added to cart.', 'Success');
                                 window.location.href = 'carts.php';
