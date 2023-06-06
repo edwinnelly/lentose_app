@@ -138,7 +138,6 @@ $app = new controller;
                                 cache: false,
                                 processData:false,
                                 success: (data)=> {
-                                    
                                     if(data.trim() == "done"){
                                         toastr.success('Completed.', 'Success');
                                         setTimeout(

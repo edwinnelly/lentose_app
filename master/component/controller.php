@@ -682,7 +682,16 @@ public function cutNum($num, $precision = 2) {
     }
 
 
-
+    public function update_accounts_balance($last_bal,$account_number,$key_grant)
+    {
+          echo $query = "update money_account set balance='$last_bal' where account_number='$account_number' and host_key='$key_grant'";
+          $run_qry = $this->run_query($query);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
 
     public function update_expense_account($key_grant,$acc_name,$acc_num,$open_bal,$trans_date,$pid)
     {
@@ -880,6 +889,23 @@ public function cutNum($num, $precision = 2) {
     }
 
 
+    public function delete_expenses($pid, $key_grant)
+    {
+        $query = "delete from expenses_trackers where id='$pid' and host_key='$key_grant' limit 1";
+        return $this->runner($query);
+    }
+
+ //All user info sorted by id
+ public function get_account_balance($id,$host_key)
+ {
+     $query = "select * from money_account where id='$id' and host_key='$host_key'";
+     $row = $this->get_result($this->run_query($query));
+     $obj = new stdClass();
+     $obj->user_id = $row['id'];
+     $obj->balance = $row['balance'];
+ 
+     return $obj;
+ }
 
     public function delete_accounts_ex($pid, $key_grant)
     {
@@ -952,6 +978,7 @@ public function cutNum($num, $precision = 2) {
         $query = "update customer_log_list set status='$status' where id='$pid' and host_key='$key_grant'";
         return $this->runner($query);
     }
+
 
 
 
@@ -1829,17 +1856,7 @@ public function fetch_carts123($key_grants)
     }
 
 
-    //All user info sorted by id
-    public function get_account_balance($id,$host_key)
-    {
-        $query = "select * from money_account where id='$id' and host_key='$host_key'";
-        $row = $this->get_result($this->run_query($query));
-        $obj = new stdClass();
-        $obj->user_id = $row['id'];
-        $obj->balance = $row['balance'];
-    
-        return $obj;
-    }
+   
 
     public function update_expenses_bal($account,$key_grant,$balanced)
     {
@@ -5247,20 +5264,30 @@ public function fetch_carts123($key_grants)
 
     public function fetch_expenses($key_grant)
     {
-     $query = "select * from expenses_trackers where host_key='$key_grant' order by id desc";
+     $query = "select * from expenses_trackers where host_key='$key_grant' and store_id=0 order by id desc";
         $qx = $this->run_query($query);
         $user_list = array();
         while ($row = $this->get_result($qx)) {
             $obj = new stdClass();
             $obj->id = $row['id'];
             $obj->description = $row['description'];
-            $obj->balance = $row['balance'];
-            $obj->created_on = $row['created_on'];
+            $obj->balance = $row['account_balance'];
+            $obj->created_on = $row['date_created'];
             $obj->account_number = $row['account_number'];
             $obj->cr = $row['cr'];
-            $obj->db = $row['db'];
+            $obj->dr = $row['dr'];
             $obj->host_key = $row['host_key'];
             $obj->status = $row['status'];
+            $obj->expense_id = $row['expense_id'];
+
+            if ($obj->expense_id == 0) {
+                $obj->category_name = 'Null';
+            } else {
+                $hod_info = $this->expenses_categorys($row['host_key'],$row['expense_id'],);
+                $obj->category_name = $hod_info->category_name;
+            }
+
+            
         
             $user_list[] = $obj;
         }
@@ -5268,6 +5295,18 @@ public function fetch_carts123($key_grants)
     }
 
 
+    public function expenses_categorys($key_grant,$id)
+    {
+        $query = "select * from epenses_category where host_key='$key_grant' and status= '0' and id='$id'";
+        $row = $this->get_result($this->run_query($query));
+        $obj = new stdClass();
+        $obj->id = $row['id'];
+        $obj->category_name = $row['category_name'];
+        $obj->status = $row['status'];
+        $user_list[] = $obj;
+        return $obj;
+
+    }
 
     //sum dr for cash
     public function dr_bank_acc($s, $e)
