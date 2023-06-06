@@ -66,7 +66,7 @@ $app = new controller;
                                 <tbody>
 
                                 <?php
-                                $get_category = $app->fetch_cheque($key_grant);
+                                $get_category = $app->fetch_expenses($key_grant);
                                 $count = 0;
                                 foreach ($get_category as $cc) {
                                 $count++;
