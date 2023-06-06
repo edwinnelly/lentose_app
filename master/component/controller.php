@@ -5243,6 +5243,32 @@ public function fetch_carts123($key_grants)
         return $obj;
     }
 
+
+
+    public function fetch_expenses($key_grant)
+    {
+     $query = "select * from expenses_trackers where host_key='$key_grant' order by id desc";
+        $qx = $this->run_query($query);
+        $user_list = array();
+        while ($row = $this->get_result($qx)) {
+            $obj = new stdClass();
+            $obj->id = $row['id'];
+            $obj->description = $row['description'];
+            $obj->balance = $row['balance'];
+            $obj->created_on = $row['created_on'];
+            $obj->account_number = $row['account_number'];
+            $obj->cr = $row['cr'];
+            $obj->db = $row['db'];
+            $obj->host_key = $row['host_key'];
+            $obj->status = $row['status'];
+        
+            $user_list[] = $obj;
+        }
+        return $user_list;
+    }
+
+
+
     //sum dr for cash
     public function dr_bank_acc($s, $e)
     {
