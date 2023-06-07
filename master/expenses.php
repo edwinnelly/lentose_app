@@ -41,10 +41,9 @@ $app = new controller;
                     <div class="card">
                         <div class="header">
                             <h2> Expenses Manager <small>You can view Expenses here</small></h2>
-                            <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                    data-target="#checkout">
+                            <a href="accounts"><button type="button" class="btn btn-primary float-right">
                                 New Expenses
-                            </button>
+                            </button></a>
                         </div>
                         <div class="col-lg-12 ">
 
@@ -134,6 +133,7 @@ $app = new controller;
                            
                              //display modal
                             $('#del_cat').modal('show');
+                            
                             $("#res_cheque").click(function () {
                                 const uid = $("#uid2").val();
                                 const secure = $("#secure2").val();

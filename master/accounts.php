@@ -21,7 +21,7 @@ $app = new controller;
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row">
-                    <div class="col-lg-5 col-md-8 col-sm-12">
+                    <div class="col-lg-10 col-md-8 col-sm-12">
                         <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
                                         class="fa fa-arrow-left"></i></a>Account Manager</h2>
                         <ul class="breadcrumb">
@@ -32,7 +32,21 @@ $app = new controller;
                                     data-target="#checkout">
                                 New Expenses
                             </button></li>
+                            <li class="breadcrumb-item active"> <a href="expenses"><button type="button" class="btn btn-primary float-right">
+                                 Expenses History
+                            </button></a></li>
+                            <li class="breadcrumb-item active"> <a href="funds_transfer"><button type="button" class="btn btn-primary float-right">
+                                 Send Fund
+                            </button></a></li>
+
+                            <li class="breadcrumb-item active"> <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                    data-target="#account_new">
+                                New Account
+                            </button></li>
+
+                            
                         </ul>
+                        
                     </div>
                     <div class="col-lg-7 col-md-4 col-sm-12 text-right">
                         <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
@@ -45,14 +59,10 @@ $app = new controller;
                     <div class="card">
                         <div class="header">
                             <h2> Account Manager <small>You can view Account here</small></h2>
-                            <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                    data-target="#account_new">
-                                New Account
-                            </button>
+                           
+        
                         </div>
-                        <div class="col-lg-12 ">
-
-                        </div>
+                        
                         <div class="body table-responsive">
                             <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                                 <thead>
@@ -89,10 +99,7 @@ $app = new controller;
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                                    <a class="dropdown-item app_cheq" style="cursor: pointer;" data-item="<?= $cc->vendor_name; ?> / Cheque: <?= $cc->cheque_no;  ?> / Bank name: <?= $cc->bank_name;  ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>" data-trnx="<?= $cc->transaction_id; ?>"> Toup account</a>
-                                                    <?php if($cc->completed=='yes'){echo "<span class='dropdown-item text-danger'>Dispatched</span>";}else{
-                                                        include "script/button_cheque_approve.php"; }  ?>
-
+                                            
                                                    <a class="dropdown-item" href="customize_account?fib=<?= base64_encode($cc->id); ?>&&cc=<?= base64_encode($cc->acc_type);  ?>">Edit Account</a>
                                                     <hr>
                                                     <a class="dropdown-item remove_items" style="cursor: pointer;" data-item="<?= $cc->acc_type; ?>" data-id="<?= $cc->id; ?>" data-secure="<?= $binder; ?>">Delete</a>

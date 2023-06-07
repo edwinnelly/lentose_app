@@ -1,5 +1,4 @@
 <?php
-include_once('cores.php');
 include_once('db-config.php');
 include_once('session.php');
 //ini_set('display_errors', 1);
@@ -682,9 +681,30 @@ public function cutNum($num, $precision = 2) {
     }
 
 
+
+    //create history for the account to account
+
+    public function add_histroy_acc_acc($key_grant,$froms,$tos,$description,$amount,$trans_date)
+    {
+            $dated = date('d-m-Y');
+        //from 
+          echo $query = "INSERT INTO `expenses_trackers` (`id`, `description`, `host_key`, `store_id`, `cr`, `dr`, `date_created`, `rec_by`, `auto_check`, `expense_id`, `account_number`, `account_balance`, `froms`, `tos`) VALUES (NULL, '$description', '$key_grant', '0', '$amount', '0', '$trans_date', '0', '0', '0', '0', '0', '$froms', '$tos')";
+            //to
+          $query1 = "INSERT INTO `expenses_trackers` (`id`, `description`, `host_key`, `store_id`, `cr`, `dr`, `date_created`, `rec_by`, `auto_check`, `expense_id`, `account_number`, `account_balance`, `froms`, `tos`) VALUES (NULL, '$description', '$key_grant', '0', '0', '$amount', '$trans_date', '0', '0', '0', '0', '0', '$froms', '$tos')";
+     
+          $run_qry = $this->run_query($query);
+          $run_qry1 = $this->run_query($query1);
+        if ($run_qry == true) {
+            return "success";
+        } else {
+            return "Invalid Command";
+        }
+    }
+
+
     public function update_accounts_balance($last_bal,$account_number,$key_grant)
     {
-          echo $query = "update money_account set balance='$last_bal' where account_number='$account_number' and host_key='$key_grant'";
+           $query = "update money_account set balance='$last_bal' where id='$account_number' and host_key='$key_grant'";
           $run_qry = $this->run_query($query);
         if ($run_qry == true) {
             return "success";
